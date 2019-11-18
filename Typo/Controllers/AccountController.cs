@@ -27,7 +27,6 @@ namespace Typo.Controllers
         [HttpPost]
         public IActionResult Register(Account accounts)
         {
-
             var query = "INSERT INTO Account(username, password) VALUES('{0}', '{1}')";
             var queryFull = string.Format(query, accounts.username, accounts.password);
             var sc = new SqlConnection(_connectionString);
