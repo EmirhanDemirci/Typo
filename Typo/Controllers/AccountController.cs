@@ -23,6 +23,7 @@ namespace Typo.Controllers
             return View();
         }
 
+        //register account
         [HttpPost]
         public IActionResult Register(Account accounts)
         {
