@@ -96,7 +96,7 @@ namespace Typo.Controllers
                 Account.Accounts = null;
             }
 
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("Login", "Account");
         }
     }
 }
