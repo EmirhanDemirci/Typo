@@ -8,6 +8,8 @@ namespace Typo.Models
 {
     public class Account
     {
+        public static Account Accounts { get; set; }
+
         public int userId { get; set; }
         [Required]
         public string username { get; set; }

@@ -22,6 +22,10 @@ namespace Typo.Controllers
         {
             return View();
         }
+        public IActionResult Login()
+        {
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Register(Account accounts)
@@ -46,6 +50,53 @@ namespace Typo.Controllers
             }
             // hoi
             return RedirectToAction("Register", "Account");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(Account objUser)
+        {
+            var account = LoginUser(objUser);
+            if (account != null)
+            {
+
+                Account.Accounts = account;
+                return RedirectToAction("Index", "Home");
+
+            }
+            return View();
+        }
+
+        private Account LoginUser(Account accounts)
+        {
+            Account account = null;
+            var query = "SELECT * FROM Account WHERE username = '{0}' AND password = '{1}'";
+            var queryFull = string.Format(query, accounts.username, accounts.password);
+            var sc = new SqlConnection(_connectionString);
+            sc.Open();
+            using (SqlCommand cmd = new SqlCommand(queryFull, sc))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    account = new Account()
+                    {
+                        userId = reader.GetInt32(0),
+                        username = reader.GetString(1),
+                        password = reader.GetString(2)
+                    };
+                }
+            }
+            return account;
+        }
+        public IActionResult LogOut()
+        {
+            if (Account.Accounts != null)
+            {
+                Account.Accounts = null;
+            }
+
+            return RedirectToAction("Login", "Login");
         }
     }
 }
