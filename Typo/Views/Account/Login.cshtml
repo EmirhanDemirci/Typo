@@ -5,7 +5,7 @@
 }
 
 <div class="page-header">
-    <h1>Login <small>to get access to all the items</small></h1>
+    <h1>Login <small>to get access to the website</small></h1>
 </div>
 <div class="container">
     <div class="row" id="test">
@@ -25,9 +25,11 @@
                             <input asp-for="password" type="password" class="form-control" placeholder="Fill Password" />
                             <span asp-validation-for="password" class="text-danger"></span>
                         </div>
-                        <button class="btn btn-default" type="submit" id="nice">Login</button>
+                        <button class="btn btn-default" type="submit">Login</button>
+                        <button onclick="location.href = '@Url.Action("Register", "Account")'" class="btn btn-default" type="button">Register</button>
                     </div>
                 </form>
+                
                 @ViewData["Message"]
             </div>
         </div>
