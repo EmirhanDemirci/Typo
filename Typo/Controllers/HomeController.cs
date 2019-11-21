@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Typo.Models;
+using Typo.Model.Models;
 
 namespace Typo.Controllers
 {
