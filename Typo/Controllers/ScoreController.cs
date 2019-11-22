@@ -20,11 +20,11 @@ namespace Typo.Controllers
             _connectionString = config.GetSection("Connection")["MSSQL"];
         }
 
-        /*
-        public IActionResult Register()
+        
+        public IActionResult ScoreCheck()
         {
             return View();
-        }*/
+        }
 
         public IActionResult ScoreInput()
         {
@@ -53,7 +53,6 @@ namespace Typo.Controllers
                     sc.Close();
                 }
             }
-            // hoi
             return RedirectToAction("ScoreInput", "Score");
         }
 
@@ -63,28 +62,32 @@ namespace Typo.Controllers
 
 
 
-        /*
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Account objUser)
+        public ActionResult ScoreCheck(Score score)
         {
-            var account = LoginUser(objUser);
-            if (account != null)
+            var IdUser = ScoreResult(score);
+            if (IdUser != null)
             {
 
-                Account.Accounts = account;
-                return RedirectToAction("Index", "Home");
+                
+                return RedirectToAction("ScoreCheck", "Score");
 
             }
             return View();
         }
 
-        private Account LoginUser(Account accounts)
+        private Score ScoreResult(Score score)
         {
-            Account account = null;
-            var query = "SELECT * FROM Account WHERE username = '{0}' AND password = '{1}'";
-            var queryFull = string.Format(query, accounts.username, accounts.password);
+            Score scores = null;
+            var query = "SELECT * FROM ScoreId";
+
+            
+            query += score;
+            query += " WHERE score = '{0}'";
+            var queryFull = string.Format(query, scores.score);
             var sc = new SqlConnection(_connectionString);
             sc.Open();
             using (SqlCommand cmd = new SqlCommand(queryFull, sc))
@@ -92,16 +95,17 @@ namespace Typo.Controllers
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    account = new Account()
+                    scores = new Score()
                     {
-                        userId = reader.GetInt32(0),
-                        username = reader.GetString(1),
-                        password = reader.GetString(2)
+                        scoreId = reader.GetInt32(0),
+                        score = reader.GetString(1)
                     };
                 }
             }
-            return account;
+            return scores;
         }
+
+
 
 
         /*

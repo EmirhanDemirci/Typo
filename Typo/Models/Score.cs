@@ -7,6 +7,7 @@ namespace Typo.Models
 {
     public class Score
     {
+        public static Score Scores { get; set; }
         public int scoreId { get; set; }
         public string score { get; set; }
     }
