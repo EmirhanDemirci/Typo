@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Logic;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Typo.Controllers;
@@ -14,10 +15,14 @@ namespace Typo.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly AccountServices _accountServices;
+        private readonly IHostingEnvironment _environment;
+
         readonly string _connectionString;
-        public AccountController(IConfiguration config)
+        public AccountController(IConfiguration config, IHostingEnvironment environment)
         {
-            _connectionString = config.GetSection("Connection")["MSSQL"];
+            _environment = environment;
+            _accountServices = new Factory(config).AccountService();
         }
 
         public IActionResult Register()
