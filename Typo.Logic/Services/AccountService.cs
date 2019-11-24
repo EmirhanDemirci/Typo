@@ -27,5 +27,10 @@ namespace Typo.Logic.Services
             }
             return account;
         }
+
+        public void Register(string username, string password)
+        {
+            _accountSql.Register(username, password);
+        }
     }
 }

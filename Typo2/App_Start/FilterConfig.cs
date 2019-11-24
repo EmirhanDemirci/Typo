@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Typo2
+namespace Typo
 {
     public class FilterConfig
     {

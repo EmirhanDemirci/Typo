@@ -23,29 +23,13 @@ namespace Typo.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Register(Account accounts)
-        //{
-            //var query = "INSERT INTO Account(username, password) VALUES('{0}', '{1}')";
-            //var queryFull = string.Format(query, accounts.username, accounts.password);
-            //var sc = new SqlConnection(_connectionString);
-            //sc.Open();
-            //using (SqlCommand cmd = new SqlCommand(queryFull, sc))
-            //{
-            //    try
-            //    {
-            //        cmd.ExecuteNonQuery();
-            //        sc.Close();
-            //    }
-            //    catch
-            //    {
+        [HttpPost]
+        public ActionResult Register(Account account)
+        {
+            _accountServices.Register(account.username, account.password);
 
-            //        sc.Close();
-            //    }
-            //}
-            //// hoi
-            //return RedirectToAction("Register", "Account");
-        //}
+            return RedirectToAction("Register", "Account");
+        }
 
         [HttpPost]
         public ActionResult Login(Account account)

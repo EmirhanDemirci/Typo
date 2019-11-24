@@ -52,5 +52,25 @@ namespace Typo.Dal.Database
             }
             return account;
         }
+
+        public void Register(string username, string password)
+        {
+            var query = "INSERT INTO Account(username, password) VALUES('{0}', '{1}')";
+            var queryFull = string.Format(query, username, password);
+            MssqlConnectionString.Open();
+            using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
+            {
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MssqlConnectionString.Close();
+                }
+                catch
+                {
+
+                    MssqlConnectionString.Close();
+                }
+            }
+        }
     }
 }

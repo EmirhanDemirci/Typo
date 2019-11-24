@@ -25,39 +25,21 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>
-                        @{
-                            if (Account.Accounts == null)
-                            {
-                                <a onclick="location.href='@Url.Action("LogIn", "Account")'">Login</a>
-                            }
-                            else
-                            {
-                                <a onclick="location.href='@Url.Action("LogOut", "Account")'">Logout</a>
-                            }
-
-                        }
-
-                    </li>
-
-                    <li>
-                        @{
-                            if (Account.Accounts == null)
-                            {
-                                <a asp-area="" asp-controller="Account" asp-action="Register" onclick="location.href='@Url.Action("Register", "Account")'">Register</a>
-                            }
-                        }
-                    </li>
+                    @if (Account.Accounts == null)
+                    {
+                        <li>@Html.ActionLink("Login", "LogIn", "Account")</li>
+}
+                    else
+                    {
+                        <li>@Html.ActionLink("Logout", "LogOut", "Account")</li>
+}
+                    @if (Account.Accounts == null)
+                    {
+                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+}
                 </ul>
             </div>
-
         </div>
-        @if (Account.Accounts != null)
-        {
-            <div class="logging">
-                @*Hier ben ik gebleven*@
-            </div>
-        }
     </div>
     <div class="container body-content">
         @RenderBody()
@@ -66,9 +48,15 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+@if (Account.Accounts != null)
+{
+    <div class="logging">
+        @*Hier ben ik gebleven*@
+    </div>
+}
