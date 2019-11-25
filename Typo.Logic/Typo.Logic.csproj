@@ -46,17 +46,17 @@
     <Compile Include="Services\AccountService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Typo.Dal\Typo.Dal.csproj">
-      <Project>{A1160516-F62C-43F2-BB3C-F7AE0BCC3056}</Project>
+      <Project>{a1160516-f62c-43f2-bb3c-f7ae0bcc3056}</Project>
       <Name>Typo.Dal</Name>
     </ProjectReference>
     <ProjectReference Include="..\Typo.Model\Typo.Model.csproj">
-      <Project>{560B0082-FE0E-4714-B4C6-4B496751AF7E}</Project>
+      <Project>{560b0082-fe0e-4714-b4c6-4b496751af7e}</Project>
       <Name>Typo.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
