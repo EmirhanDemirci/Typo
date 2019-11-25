@@ -4,11 +4,12 @@
     ViewBag.Title = "Home Page";
 }
 @{
-    if (Model.username != "")
-    {
-        <h1>Welkom @Model.username</h1>
+    string val = "";
+    if (Request.Cookies["UserInfo"] != null) {
+        val = Request.Cookies["UserInfo"].Value;
     }
 }
+    <h1>@val</h1>
 
 
 <div class="jumbotron">

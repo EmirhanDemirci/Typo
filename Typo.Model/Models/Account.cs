@@ -10,12 +10,13 @@ namespace Typo.Model.Models
     
         public class Account
         {
-            public static Account Accounts { get; set; }
             public int userId { get; set; }
             [Required]
             public string username { get; set; }
             [Required]
             public string password { get; set; }
+
+            public List<Account> accounts = new List<Account>();
 
         }
     }

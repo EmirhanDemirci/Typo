@@ -9,9 +9,10 @@ namespace Typo.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(Account account)
+        public ActionResult Index()
         {
-            return View(account);
+            HttpCookie cookie = Request.Cookies["UserInfo"];
+            return View();
         }
 
         public ActionResult About()
