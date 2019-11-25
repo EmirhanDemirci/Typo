@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 using Typo.Logic.Services;
 using Typo.Model.Models;
 
@@ -39,11 +40,12 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult Login(Account account)
         {
+            account.password = null;
             StringBuilder sb = new StringBuilder();
             _accountServices.Login(account.username, account.password);
             HttpCookie cookie = new HttpCookie("UserInfo");
-            cookie["Username"] = account.username;
-            sb.Append("Cookie value : " + cookie.Value);
+            string userJson = JsonConvert.SerializeObject(account);
+            cookie.Value = userJson;
             //cookie["Password"] = account.password;
             cookie.Expires.AddDays(1);
             Response.Cookies.Add(cookie);

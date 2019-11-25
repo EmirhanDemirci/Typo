@@ -11,7 +11,7 @@ namespace Typo.Controllers
     {
         public ActionResult Index()
         {
-            HttpCookie cookie = Request.Cookies["UserInfo"];
+            //HttpCookie cookie = Request.Cookies["UserInfo"];
             return View();
         }
 

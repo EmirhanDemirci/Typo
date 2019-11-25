@@ -16,8 +16,6 @@ namespace Typo.Model.Models
             [Required]
             public string password { get; set; }
 
-            public List<Account> accounts = new List<Account>();
-
         }
     }
 
