@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Typo.Model", "Typo.Model\Typo.Model.csproj", "{560B0082-FE0E-4714-B4C6-4B496751AF7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Typo", "Typo2\Typo.csproj", "{96072877-7274-41B5-9E79-6CC9828BAF77}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A1160516-F62C-43F2-BB3C-F7AE0BCC3056} = {A1160516-F62C-43F2-BB3C-F7AE0BCC3056}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
