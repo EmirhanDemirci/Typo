@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.Routing;
 using Typo.Logic.Services;
 using Typo.Model.Models;
 
@@ -35,15 +36,14 @@ namespace Typo.Controllers
         public ActionResult Login(Account account)
         {
             _accountServices.Login(account.username, account.password);
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new RouteValueDictionary(account));
         }
 
         public ActionResult LogOut()
         {
-            if (Account.Accounts != null)
-            {
-                Account.Accounts = null;
+            if (Session["userId"] != null)
+            { 
+               Session["userId"] = null;
             }
 
             return RedirectToAction("Login", "Account");

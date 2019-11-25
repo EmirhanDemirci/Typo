@@ -1,6 +1,15 @@
-﻿@{
+﻿@using Typo.Model.Models
+@model Typo.Model.Models.Account
+@{
     ViewBag.Title = "Home Page";
 }
+@{
+    if (Model.username != "")
+    {
+        <h1>Welkom @Model.username</h1>
+    }
+}
+
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>

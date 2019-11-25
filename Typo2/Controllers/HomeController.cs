@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Typo.Model.Models;
 
 namespace Typo.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(Account account)
         {
-            return View();
+            return View(account);
         }
 
         public ActionResult About()
