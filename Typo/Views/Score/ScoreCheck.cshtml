@@ -1,0 +1,28 @@
+﻿@model Typo.Models.Score
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
+<div class="page-header">
+    <h1>Score <small>to check a score</small></h1>
+</div>
+<div class="container">
+    <div class="row" id="test">
+        <div class="col-sm-6">
+            <div class="col-lg-12">
+                <form method="post">
+                    <div class="well">
+                        <div class="form-group">
+                            @*<h3 style="line-height: 20%;"><i class="fa fa-home fa-1x" style="line-height: 6%; color: #339966"></i> FirstName:</h3>*@
+                            <label asp-for="score"></label>
+                            <input asp-for="score" class="form-control" placeholder="Fill ID" data-val="true" />
+                            <span asp-validation-for="score" class="text-danger"></span>
+                        </div>
+                        <button class="btn btn-default" type="submit">ScoreCheck</button>
+                    </div>
+                </form>
+                @ViewData["Message"]
+            </div>
+        </div>
+    </div>
+</div> 
