@@ -26,6 +26,22 @@ namespace Typo.Dal.Database
             throw new NotImplementedException();
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public void Delete(Account obj)
         {
             throw new NotImplementedException();
@@ -78,5 +94,152 @@ namespace Typo.Dal.Database
                 }
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+        public Score ScoreHigh(string userId)
+        {
+            Score score = null;
+            var query = "SELECT * FROM ScoreId1 ORDER BY score DESC";
+
+            var queryFull = string.Format(query);
+            MssqlConnectionString.Open();
+            using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    score = new Score()
+                    {
+                        scoreId = reader.GetInt32(0),
+                        score = reader.GetString(1),
+                    };
+                }
+            }
+            return score;
+        }
+
+
+
+        public Score ScoreAvg(string userId)
+        {
+            Score score = null;
+            var query = "SELECT AVG(score) FROM ScoreId1";
+
+            var queryFull = string.Format(query);
+            MssqlConnectionString.Open();
+            using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    score = new Score()
+                    {
+                        scoreId = reader.GetInt32(0),
+                        score = reader.GetString(1),
+                    };
+                }
+            }
+            return score;
+        }
+
+
+
+
+        public Score ScoreCurrent(string userId)
+        {
+            Score score = null;
+            var query = "SELECT * FROM ScoreId1 ORDER BY scoreId DESC";
+
+            var queryFull = string.Format(query);
+            MssqlConnectionString.Open();
+            using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    score = new Score()
+                    {
+                        scoreId = reader.GetInt32(0),
+                        score = reader.GetString(1),
+                    };
+                }
+            }
+            return score;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

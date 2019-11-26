@@ -59,5 +59,43 @@ namespace Typo.Controllers
 
             return RedirectToAction("Login", "Account");
         }
+
+
+
+
+
+        [HttpPost]
+        public ActionResult ScoreHigh(Score user)
+        {
+            _ScoreServices.ScoreHigh(user.userId);
+
+            return RedirectToAction("ScoreTake", "Score");
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public ActionResult ScoreAvg(Score user)
+        {
+            _ScoreServices.ScoreAvg(user.userId);
+
+            return RedirectToAction("ScoreTake", "Score");
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public ActionResult ScoreCurrent(Score user)
+        {
+            _ScoreServices.ScoreCurrent(user.userId);
+
+            return RedirectToAction("ScoreTake", "Score");
+        }
     }
 }

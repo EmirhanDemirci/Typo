@@ -19,13 +19,13 @@ namespace Typo.Logic.Services
 
         public Score ScoreTake(string userId)
         {
-            var back = _ScoreSql.ScoreTake(userId);
+            var Take = _ScoreSql.ScoreTake(userId);
 
             if (userId == "")
             {
                 return null;
             }
-            return back;
+            return Take;
         }
 
 
@@ -33,6 +33,49 @@ namespace Typo.Logic.Services
         public void ScoreInput(string score)
         {
             _ScoreSql.ScoreInput(score);
+        }
+
+
+
+
+
+        public Score ScoreHigh(string userId)
+        {
+            var High = _ScoreSql.ScoreHigh(userId);
+
+            if (userId == "")
+            {
+                return null;
+            }
+            return High;
+        }
+
+
+
+
+        public Score ScoreAvg(string userId)
+        {
+            var Avg = _ScoreSql.ScoreAvg(userId);
+
+            if (userId == "")
+            {
+                return null;
+            }
+            return Avg;
+        }
+
+
+
+
+        public Score ScoreCurrent(string userId)
+        {
+            var Current = _ScoreSql.ScoreCurrent(userId);
+
+            if (userId == "")
+            {
+                return null;
+            }
+            return Current;
         }
     }
 }
