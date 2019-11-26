@@ -1,10 +1,12 @@
-﻿@using Typo.Model.Models
+﻿@using Newtonsoft.Json
+@using Typo.Model.Models
 @model Typo.Model.Models.Account
 @{
-    string val = "";
+    string Loggedin = "";
     if (Request.Cookies["UserInfo"] != null)
     {
-        val = Request.Cookies["UserInfo"].Value;
+        var user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
+        Loggedin = user.username; 
     }
 }
 <!DOCTYPE html>
@@ -32,7 +34,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (val == "")
+                    @if (Loggedin == "")
                     {
                         <li>@Html.ActionLink("Login", "LogIn", "Account")</li>
                     }
@@ -40,7 +42,7 @@
                     {
                         <li>@Html.ActionLink("Logout", "LogOut", "Account")</li>
                     }
-                    @if (val == "")
+                    @if (Loggedin == "")
                     {
                         <li>@Html.ActionLink("Register", "Register", "Account")</li>
                     }

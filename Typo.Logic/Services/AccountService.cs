@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO.Ports;
+using System.Reflection.Emit;
 using Typo.Dal.Database;
 using Typo.Model.Models;
 namespace Typo.Logic.Services
@@ -20,17 +21,19 @@ namespace Typo.Logic.Services
         public Account Login(string username, string password)
         {
             var account = _accountSql.Login(username, password);
-
-            if (username == "" || password == "")
+            if (username != null || password != null || account != null)
             {
-                return null;
+                return account;
             }
-            return account;
+            return null;
         }
 
         public void Register(string username, string password)
         {
-            _accountSql.Register(username, password);
+            if (username != null || password != null)
+            {
+                _accountSql.Register(username, password);
+            }
         }
     }
 }

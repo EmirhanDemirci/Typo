@@ -50,6 +50,7 @@ namespace Typo.Dal.Database
                     };
                 }
             }
+            MssqlConnectionString.Close();
             return account;
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.Emit;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -40,16 +41,25 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult Login(Account account)
         {
-            account.password = null;
-            StringBuilder sb = new StringBuilder();
-            _accountServices.Login(account.username, account.password);
-            HttpCookie cookie = new HttpCookie("UserInfo");
-            string userJson = JsonConvert.SerializeObject(account);
-            cookie.Value = userJson;
-            //cookie["Password"] = account.password;
-            cookie.Expires.AddDays(1);
-            Response.Cookies.Add(cookie);
-            return RedirectToAction("Index", "Home");
+            //account.password = null;
+            try {_accountServices.Login(account.username, account.password);}
+            catch (Exception e)
+            {
+                ViewData["Message"] = e.Message;
+                return View();
+            }
+            if (account.username != null || account.password != null || account.userId != 0) 
+            {
+                HttpCookie cookie = new HttpCookie("UserInfo");
+                string userJson = JsonConvert.SerializeObject(account);
+                cookie.Value = userJson;
+                //cookie["Password"] = account.password;
+                cookie.Expires.AddDays(1);
+                Response.Cookies.Add(cookie);
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("LogIn", "Account");
+
         }
 
         public ActionResult LogOut()
