@@ -1,0 +1,23 @@
+﻿@model Typo.Model.Models.Score
+<div class="page-header">
+    <h1>ScoreInput <small>to input a score in the database</small></h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="col-lg-12">
+                <form method="post">
+                    <div class="well">
+                        <div class="form-group">
+                            @* <h3 style="line-height: 20%;"><i class="fa fa-home fa-1x" style="line-height: 6%; color: #339966"></i> FirstName:</h3> *@
+                            @Html.LabelFor(score => Model.score)
+                            @Html.EditorFor(score => Model.score)
+                            @Html.ValidationMessageFor(score => Model.score)
+                        </div>
+                        <button class="btn btn-info" type="submit">ScoreInput</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
