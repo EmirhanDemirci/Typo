@@ -42,9 +42,11 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult ScoreTake(Score user)
         {
-            _ScoreServices.ScoreTake(user.userId);
-
-            return RedirectToAction("ScoreTake", "Score");
+            //var i =_ScoreServices.ScoreTake(user.userId);
+            var i = _ScoreServices.ScoreAvg(user.userId);
+            string p = i.score;
+            return Content(p);
+           // return RedirectToView ("ScoreTake", "Score");
         }
 
 
@@ -76,7 +78,7 @@ namespace Typo.Controllers
 
 
 
-
+        /*
         [HttpPost]
         public ActionResult ScoreAvg(Score user)
         {
@@ -84,7 +86,7 @@ namespace Typo.Controllers
 
             return RedirectToAction("ScoreTake", "Score");
         }
-
+        */
 
 
 

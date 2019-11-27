@@ -49,11 +49,14 @@ namespace Typo.Dal.Database
 
         public Score ScoreTake(string userId)
         {
-            Score score = null;
+            
             var query = "SELECT * FROM ScoreId";
             query += userId;
             query += " WHERE scoreId = '1'";
 
+
+            Score score = ScoreLocalNormal(query);
+            /*
             var queryFull = string.Format(query);
             MssqlConnectionString.Open();
             using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
@@ -68,6 +71,7 @@ namespace Typo.Dal.Database
                     };
                 }
             }
+            */
             return score;
         }
 
@@ -76,8 +80,12 @@ namespace Typo.Dal.Database
 
         public void ScoreInput(string score)
         {
-            
+
+                      
             var query = "INSERT INTO ScoreId1(score) VALUES('{0}')";
+
+
+
             var queryFull = string.Format(query, score);
             MssqlConnectionString.Open();
             using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
@@ -108,10 +116,14 @@ namespace Typo.Dal.Database
 
         public Score ScoreHigh(string userId)
         {
-            Score score = null;
-            var query = "SELECT * FROM ScoreId1 ORDER BY score DESC";
+            
+            var query = "SELECT TOP 1 * FROM ScoreId1 ORDER BY score DESC";
+
+            Score score = ScoreLocalNormal(query);
+            /*
 
             var queryFull = string.Format(query);
+
             MssqlConnectionString.Open();
             using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
             {
@@ -125,16 +137,18 @@ namespace Typo.Dal.Database
                     };
                 }
             }
+            */
+
+
             return score;
         }
 
 
-
+        
         public Score ScoreAvg(string userId)
         {
             Score score = null;
             var query = "SELECT AVG(score) FROM ScoreId1";
-
             var queryFull = string.Format(query);
             MssqlConnectionString.Open();
             using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
@@ -144,22 +158,27 @@ namespace Typo.Dal.Database
                 {
                     score = new Score()
                     {
-                        scoreId = reader.GetInt32(0),
-                        score = reader.GetString(1),
+                        
+                        score = reader.GetString(0),
                     };
                 }
             }
+
+            
             return score;
         }
 
-
+        
 
 
         public Score ScoreCurrent(string userId)
         {
-            Score score = null;
-            var query = "SELECT * FROM ScoreId1 ORDER BY scoreId DESC";
 
+            var query = "SELECT TOP 1 * FROM ScoreId1 ORDER BY scoreId DESC";
+            Score score = ScoreLocalNormal(query);
+
+
+            /*
             var queryFull = string.Format(query);
             MssqlConnectionString.Open();
             using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
@@ -173,13 +192,37 @@ namespace Typo.Dal.Database
                         score = reader.GetString(1),
                     };
                 }
+             
             }
+            */
             return score;
+
         }
 
 
 
 
+
+        private Score ScoreLocalNormal(string query)
+        {
+            Score score = null;
+            var queryFull = string.Format(query);
+            MssqlConnectionString.Open();
+            using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    score = new Score()
+                    {
+                        scoreId = reader.GetInt32(0),
+                        score = reader.GetString(1),
+                    };
+                }
+
+            }
+            return score;
+        }
 
 
 

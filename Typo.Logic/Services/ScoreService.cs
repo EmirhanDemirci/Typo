@@ -51,7 +51,7 @@ namespace Typo.Logic.Services
         }
 
 
-
+        
 
         public Score ScoreAvg(string userId)
         {
@@ -64,7 +64,7 @@ namespace Typo.Logic.Services
             return Avg;
         }
 
-
+    
 
 
         public Score ScoreCurrent(string userId)
