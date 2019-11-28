@@ -18,21 +18,21 @@ namespace Typo.Logic.Services
             _accountSql = new AccountSQL();
         }
         
-        public Account Login(string username, string password)
+        public Account Login(string mailUser, string password)
         {
-            var account = _accountSql.Login(username, password);
-            if (username != null || password != null || account != null)
+            var account = _accountSql.Login(mailUser, password);
+            if (mailUser != null || password != null || account != null)
             {
                 return account;
             }
             return null;
         }
 
-        public void Register(string username, string password)
+        public void Register(string username, string password, string firstname, string lastname, DateTime birthdate)
         {
             if (username != null || password != null)
             {
-                _accountSql.Register(username, password);
+                _accountSql.Register(username, password, firstname, lastname, birthdate);
             }
         }
     }

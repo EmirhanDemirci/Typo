@@ -31,11 +31,11 @@ namespace Typo.Dal.Database
             throw new NotImplementedException();
         }
 
-        public Account Login(string username, string password)
+        public Account Login(string mailUser, string password)
         {
             Account account = null;
-            var query = "SELECT * FROM Account WHERE username = '{0}' AND password = '{1}'";
-            var queryFull = string.Format(query, username, password);
+            var query = "SELECT * FROM Account WHERE mailUser = '{0}' AND password = '{1}'";
+            var queryFull = string.Format(query, mailUser, password);
             MssqlConnectionString.Open();
             using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
             {
@@ -44,9 +44,9 @@ namespace Typo.Dal.Database
                 {
                     account = new Account()
                     {
-                        userId = reader.GetInt32(0),
-                        username = reader.GetString(1),
-                        password = reader.GetString(2)
+                        UserId = reader.GetInt32(0),
+                        MailUser = reader.GetString(1),
+                        Password = reader.GetString(2)
                     };
                 }
             }
@@ -54,10 +54,10 @@ namespace Typo.Dal.Database
             return account;
         }
 
-        public void Register(string username, string password)
+        public void Register(string mailUser, string password, string firstname, string lastname, DateTime birthdate)
         {
-            var query = "INSERT INTO Account(username, password) VALUES('{0}', '{1}')";
-            var queryFull = string.Format(query, username, password);
+            var query = "INSERT INTO Account(MailUser, Password, FirstName, LastName, BirthDate) VALUES('{0}', '{1}', '{2}', '{3}', '{4}')";
+            var queryFull = string.Format(query, mailUser, password, firstname, lastname, birthdate);
             MssqlConnectionString.Open();
             using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
             {

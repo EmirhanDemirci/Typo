@@ -33,7 +33,7 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult Register(Account account)
         {
-            _accountServices.Register(account.username, account.password);
+            _accountServices.Register(account.MailUser, account.Password, account.FirstName, account.LastName, account.BirthDate);
 
             return RedirectToAction("Register", "Account");
         }
@@ -42,13 +42,13 @@ namespace Typo.Controllers
         public ActionResult Login(Account account)
         {
             //account.password = null;
-            try {_accountServices.Login(account.username, account.password);}
+            try {_accountServices.Login(account.MailUser, account.Password);}
             catch (Exception e)
             {
                 ViewData["Message"] = e.Message;
                 return View();
             }
-            if (account.username != null || account.password != null || account.userId != 0) 
+            if (account.MailUser != null || account.Password != null || account.UserId != 0) 
             {
                 HttpCookie cookie = new HttpCookie("UserInfo");
                 string userJson = JsonConvert.SerializeObject(account);

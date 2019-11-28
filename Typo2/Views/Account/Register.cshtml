@@ -10,15 +10,33 @@
                     <div class="well">
                         <div class="form-group">
                             @* <h3 style="line-height: 20%;"><i class="fa fa-home fa-1x" style="line-height: 6%; color: #339966"></i> FirstName:</h3> *@
-                            @Html.LabelFor(Model => Model.username)
-                            @Html.EditorFor(Model => Model.username)
-                            @Html.ValidationMessageFor(Model => Model.username)
+                            @Html.LabelFor(Model => Model.MailUser)
+                            @Html.EditorFor(Model => Model.MailUser)
+                            @Html.ValidationMessageFor(Model => Model.MailUser)
                         </div>
                         <div class="form-group">
                             @* <h3 style="line-height: 20%;"><i class="fa fa-envelope fa-1x" style="line-height: 6%; color: #339966"></i> LastName:</h3> *@
-                            @Html.LabelFor(Model => Model.password)
-                            @Html.EditorFor(Model => Model.password)
-                            @Html.ValidationMessageFor(Model => Model.password)
+                            @Html.LabelFor(Model => Model.Password)
+                            @Html.Password("Password")
+                            @Html.ValidationMessageFor(Model => Model.Password)
+                        </div>
+                        <div class="form-group">
+                            @* <h3 style="line-height: 20%;"><i class="fa fa-envelope fa-1x" style="line-height: 6%; color: #339966"></i> LastName:</h3> *@
+                            @Html.LabelFor(Model => Model.FirstName)
+                            @Html.EditorFor(Model => Model.FirstName)
+                            @Html.ValidationMessageFor(Model => Model.FirstName)
+                        </div>
+                        <div class="form-group">
+                            @* <h3 style="line-height: 20%;"><i class="fa fa-envelope fa-1x" style="line-height: 6%; color: #339966"></i> LastName:</h3> *@
+                            @Html.LabelFor(Model => Model.LastName)
+                            @Html.EditorFor(Model => Model.LastName)
+                            @Html.ValidationMessageFor(Model => Model.LastName)
+                        </div>
+                        <div class="form-group">
+                            @* <h3 style="line-height: 20%;"><i class="fa fa-envelope fa-1x" style="line-height: 6%; color: #339966"></i> LastName:</h3> *@
+                            @Html.LabelFor(Model => Model.BirthDate)
+                            @Html.Editor("BirthDate")
+                            @Html.ValidationMessageFor(Model => Model.BirthDate)
                         </div>
                         <button class="btn btn-info" type="submit">Register</button>
                     </div>
