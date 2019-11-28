@@ -17,6 +17,16 @@ namespace Typo.Logic.Services
             _ScoreSql = new ScoreSQL();
         }
 
+
+
+        public void ScoreCreate(string score)
+        {
+            _ScoreSql.ScoreCreate(score);
+        }
+
+
+
+
         public Score ScoreTake(string userId)
         {
             var Take = _ScoreSql.ScoreTake(userId);

@@ -27,6 +27,11 @@ namespace Typo.Controllers
             return View();
         }
 
+        public ActionResult ScoreCreate()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult ScoreInput(Score user)
         {
@@ -36,7 +41,13 @@ namespace Typo.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult ScoreCreate(Score user)
+        {
+            _ScoreServices.ScoreCreate(user.score);
 
+            return RedirectToAction("ScoreCreate", "Score");
+        }
 
 
         [HttpPost]

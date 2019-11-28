@@ -33,6 +33,32 @@ namespace Typo.Dal.Database
 
 
 
+        public void ScoreCreate(string score)
+        {
+
+
+            //var query = "INSERT INTO ScoreId1(score) VALUES('{0}')";
+
+            var query = "ALTER TABLE ScoreId1 ADD score2 nvarchar(255)";
+
+            var queryFull = string.Format(query);
+            MssqlConnectionString.Open();
+            using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
+            {
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MssqlConnectionString.Close();
+                }
+                catch
+                {
+
+                    MssqlConnectionString.Close();
+                }
+            }
+        }
+
+
 
 
 
@@ -78,6 +104,11 @@ namespace Typo.Dal.Database
 
 
 
+
+
+
+        /*
+
         public void ScoreInput(string score)
         {
 
@@ -103,8 +134,31 @@ namespace Typo.Dal.Database
             }
         }
 
+        */
+        public void ScoreInput(string score) // test for create column input
+        {
 
 
+            var query = "INSERT INTO ScoreId1(score2) VALUES('{0}')";
+
+
+
+            var queryFull = string.Format(query, score);
+            MssqlConnectionString.Open();
+            using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
+            {
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MssqlConnectionString.Close();
+                }
+                catch
+                {
+
+                    MssqlConnectionString.Close();
+                }
+            }
+        }
 
 
 
