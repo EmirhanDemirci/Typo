@@ -42,16 +42,17 @@ namespace Typo.Controllers
         public ActionResult Login(Account account)
         {
             //account.password = null;
-            try {_accountServices.Login(account.MailUser, account.Password);}
+            Account newAccount;
+            try { newAccount = _accountServices.Login(account.MailUser, account.Password);}
             catch (Exception e)
             {
                 ViewData["Message"] = e.Message;
                 return View();
             }
-            if (account.MailUser != null || account.Password != null || account.UserId != 0) 
+            if (newAccount != null) 
             {
                 HttpCookie cookie = new HttpCookie("UserInfo");
-                string userJson = JsonConvert.SerializeObject(account);
+                string userJson = JsonConvert.SerializeObject(newAccount);
                 cookie.Value = userJson;
                 //cookie["Password"] = account.password;
                 cookie.Expires.AddDays(1);

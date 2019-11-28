@@ -9,7 +9,7 @@
     if (Request.Cookies["UserInfo"] != null)
     {
         var user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
-        LoggedUser = user.username;
+        LoggedUser = user.MailUser;
     }
 }
     <h1>@LoggedUser</h1>

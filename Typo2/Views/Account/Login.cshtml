@@ -9,14 +9,12 @@
                 <form method="post">
                     <div class="well">
                         <div class="form-group">
-                            @Html.LabelFor(Model => Model.MailUser)
-                            @Html.EditorFor(Model => Model.MailUser)
-                            @Html.ValidationMessageFor(Model => Model.MailUser)
+                            <label>E-mail:</label>
+                            <input name="MailUser" type="email" class="form-control" placeholder="Your Email." required />
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(Model => Model.Password)
-                            @Html.EditorFor(Model => Model.Password)
-                            @Html.ValidationMessageFor(Model => Model.Password)
+                            <label>Password:</label>
+                            <input name="Password" type="password" class="form-control" placeholder="Your Password." required />
                         </div>
                         <button type="submit" class="btn btn-info">Submit</button>
                     </div>
