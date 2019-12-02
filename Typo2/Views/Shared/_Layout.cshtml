@@ -1,5 +1,14 @@
-﻿@using Typo.Model.Models
+﻿@using Newtonsoft.Json
+@using Typo.Model.Models
 @model Typo.Model.Models.Account
+@{
+    string Loggedin = "";
+    if (Request.Cookies["UserInfo"] != null)
+    {
+        var user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
+        Loggedin = user.MailUser; 
+    }
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,22 +34,24 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (Account.Accounts == null)
+                    @if (Loggedin == "")
                     {
                         <li>@Html.ActionLink("Login", "LogIn", "Account")</li>
-}
+                    }
                     else
                     {
                         <li>@Html.ActionLink("Logout", "LogOut", "Account")</li>
-}
-                    @if (Account.Accounts == null)
+                    }
+                    @if (Loggedin == "")
                     {
                         <li>@Html.ActionLink("Register", "Register", "Account")</li>
-}
+                    }
                 </ul>
             </div>
         </div>
     </div>
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -53,10 +64,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
-@if (Account.Accounts != null)
-{
-    <div class="logging">
-        @*Hier ben ik gebleven*@
-    </div>
-}

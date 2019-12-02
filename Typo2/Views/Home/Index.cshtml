@@ -1,6 +1,19 @@
-﻿@{
+﻿@using Newtonsoft.Json
+@using Typo.Model.Models
+@model Typo.Model.Models.Account
+@{
     ViewBag.Title = "Home Page";
 }
+@{
+    string LoggedUser = "";
+    if (Request.Cookies["UserInfo"] != null)
+    {
+        var user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
+        LoggedUser = user.MailUser;
+    }
+}
+    <h1>@LoggedUser</h1>
+
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
