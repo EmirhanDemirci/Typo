@@ -12,7 +12,6 @@ namespace Typo.Controllers
     {
         private readonly ScoreService _ScoreServices;
 
-
         public ScoreController()
         {
             _ScoreServices = new ScoreService();
@@ -40,6 +39,7 @@ namespace Typo.Controllers
             return RedirectToAction("ScoreInput", "Score");
         }
 
+<<<<<<< HEAD
 
         [HttpPost]
         public ActionResult ScoreCreate(Score user)
@@ -50,6 +50,8 @@ namespace Typo.Controllers
         }
 
 
+=======
+>>>>>>> develop
         [HttpPost]
         public ActionResult ScoreTake(Score user)
         {
@@ -60,23 +62,6 @@ namespace Typo.Controllers
            // return RedirectToView ("ScoreTake", "Score");
         }
 
-
-
-
-        public ActionResult LogOut()
-        {
-            if (Account.Accounts != null)
-            {
-                Account.Accounts = null;
-            }
-
-            return RedirectToAction("Login", "Account");
-        }
-
-
-
-
-
         [HttpPost]
         public ActionResult ScoreHigh(Score user)
         {
@@ -85,11 +70,14 @@ namespace Typo.Controllers
             return RedirectToAction("ScoreTake", "Score");
         }
 
+<<<<<<< HEAD
 
 
 
 
         /*
+=======
+>>>>>>> develop
         [HttpPost]
         public ActionResult ScoreAvg(Score user)
         {
@@ -97,11 +85,14 @@ namespace Typo.Controllers
 
             return RedirectToAction("ScoreTake", "Score");
         }
+<<<<<<< HEAD
         */
 
 
 
 
+=======
+>>>>>>> develop
 
         [HttpPost]
         public ActionResult ScoreCurrent(Score user)

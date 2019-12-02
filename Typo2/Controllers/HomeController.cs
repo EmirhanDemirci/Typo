@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Typo.Model.Models;
 
 namespace Typo.Controllers
 {
@@ -10,6 +11,7 @@ namespace Typo.Controllers
     {
         public ActionResult Index()
         {
+            //HttpCookie cookie = Request.Cookies["UserInfo"];
             return View();
         }
 

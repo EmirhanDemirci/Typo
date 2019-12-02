@@ -1,4 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Reflection.Emit;
+using System.Text;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 using Typo.Logic.Services;
 using Typo.Model.Models;
 
@@ -26,7 +33,7 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult Register(Account account)
         {
-            _accountServices.Register(account.username, account.password);
+            _accountServices.Register(account.MailUser, account.Password, account.FirstName, account.LastName, account.BirthDate);
 
             return RedirectToAction("Register", "Account");
         }
@@ -34,16 +41,35 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult Login(Account account)
         {
-            _accountServices.Login(account.username, account.password);
+            //account.password = null;
+            Account newAccount;
+            try { newAccount = _accountServices.Login(account.MailUser, account.Password);}
+            catch (Exception e)
+            {
+                ViewData["Message"] = e.Message;
+                return View();
+            }
+            if (newAccount != null) 
+            {
+                HttpCookie cookie = new HttpCookie("UserInfo");
+                string userJson = JsonConvert.SerializeObject(newAccount);
+                cookie.Value = userJson;
+                //cookie["Password"] = account.password;
+                cookie.Expires.AddDays(1);
+                Response.Cookies.Add(cookie);
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("LogIn", "Account");
 
-            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult LogOut()
         {
-            if (Account.Accounts != null)
+            if (Request.Cookies["UserInfo"] != null)
             {
-                Account.Accounts = null;
+                var c = new HttpCookie("UserInfo");
+                c.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(c);
             }
 
             return RedirectToAction("Login", "Account");
