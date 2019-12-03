@@ -39,7 +39,6 @@ namespace Typo.Controllers
             return RedirectToAction("ScoreInput", "Score");
         }
 
-<<<<<<< HEAD
 
         [HttpPost]
         public ActionResult ScoreCreate(Score user)
@@ -50,8 +49,7 @@ namespace Typo.Controllers
         }
 
 
-=======
->>>>>>> develop
+
         [HttpPost]
         public ActionResult ScoreTake(Score user)
         {
@@ -70,14 +68,13 @@ namespace Typo.Controllers
             return RedirectToAction("ScoreTake", "Score");
         }
 
-<<<<<<< HEAD
+
 
 
 
 
         /*
-=======
->>>>>>> develop
+
         [HttpPost]
         public ActionResult ScoreAvg(Score user)
         {
@@ -85,14 +82,12 @@ namespace Typo.Controllers
 
             return RedirectToAction("ScoreTake", "Score");
         }
-<<<<<<< HEAD
+
         */
 
 
 
 
-=======
->>>>>>> develop
 
         [HttpPost]
         public ActionResult ScoreCurrent(Score user)
