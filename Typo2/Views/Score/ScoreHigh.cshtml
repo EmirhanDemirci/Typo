@@ -1,0 +1,25 @@
+﻿@model Typo.Model.Models.Score
+
+
+<div class="page-header">
+    <h1>ScoreHigh <small>get the high score</small></h1>
+</div>
+
+<div class="container">
+    <div class="row" id="test">
+        <div class="col-sm-6">
+            <div class="col-lg-12">
+                <form method="post">
+                    <div class="well">
+                        <div class="form-group">
+                            @Html.LabelFor(userId => Model.userId)
+                            @Html.EditorFor(userId => Model.userId)
+                            @Html.ValidationMessageFor(userId => Model.userId)
+                        </div>
+                        <button type="submit" class="btn btn-info">ScoreHigh</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

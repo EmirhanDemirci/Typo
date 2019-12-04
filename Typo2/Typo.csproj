@@ -170,6 +170,10 @@
     <Content Include="Views\Game\TypeRacer.cshtml" />
     <Content Include="Views\Score\ScoreInput.cshtml" />
     <Content Include="Views\Score\ScoreTake.cshtml" />
+    <Content Include="Views\Score\ScoreCreate.cshtml" />
+    <Content Include="Views\Score\ScoreAVG.cshtml" />
+    <Content Include="Views\Score\ScoreCurrent.cshtml" />
+    <Content Include="Views\Score\ScoreHigh.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
