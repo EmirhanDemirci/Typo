@@ -1,20 +1,22 @@
 ﻿@model Typo.Model.Models.Score
+
+
 <div class="page-header">
-    <h1>ScoreCreate <small>to Create a new column in a database</small></h1>
+    <h1>ScoreHigh <small>get the high score</small></h1>
 </div>
+
 <div class="container">
-    <div class="row">
+    <div class="row" id="test">
         <div class="col-sm-6">
             <div class="col-lg-12">
                 <form method="post">
                     <div class="well">
                         <div class="form-group">
-                            @* <h3 style="line-height: 20%;"><i class="fa fa-home fa-1x" style="line-height: 6%; color: #339966"></i> FirstName:</h3> *@
                             @Html.LabelFor(userId => Model.userId)
                             @Html.EditorFor(userId => Model.userId)
                             @Html.ValidationMessageFor(userId => Model.userId)
                         </div>
-                        <button class="btn btn-info" type="submit">ScoreCreate</button>
+                        <button type="submit" class="btn btn-info">ScoreHigh</button>
                     </div>
                 </form>
             </div>

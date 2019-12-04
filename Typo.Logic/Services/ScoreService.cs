@@ -19,14 +19,14 @@ namespace Typo.Logic.Services
 
 
 
-        public void ScoreCreate(string score)
+        public void ScoreCreate(string userid)
         {
-            _ScoreSql.ScoreCreate(score);
+            _ScoreSql.ScoreCreate(userid);
         }
 
 
 
-
+        /*
         public Score ScoreTake(string userId)
         {
             var Take = _ScoreSql.ScoreTake(userId);
@@ -37,12 +37,12 @@ namespace Typo.Logic.Services
             }
             return Take;
         }
+        */
 
 
-
-        public void ScoreInput(string score)
+        public void ScoreInput(string score, string userid)
         {
-            _ScoreSql.ScoreInput(score);
+            _ScoreSql.ScoreInput(score , userid);
         }
 
 

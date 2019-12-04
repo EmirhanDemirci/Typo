@@ -31,10 +31,24 @@ namespace Typo.Controllers
             return View();
         }
 
+        public ActionResult ScoreAvg()
+        {
+            return View();
+        }
+
+        public ActionResult ScoreCurrent()
+        {
+            return View();
+        }
+        public ActionResult ScoreHigh()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult ScoreInput(Score user)
         {
-            _ScoreServices.ScoreInput(user.score);
+            _ScoreServices.ScoreInput(user.score, user.userId);
 
             return RedirectToAction("ScoreInput", "Score");
         }
@@ -43,13 +57,13 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult ScoreCreate(Score user)
         {
-            _ScoreServices.ScoreCreate(user.score);
+            _ScoreServices.ScoreCreate(user.userId);
 
             return RedirectToAction("ScoreCreate", "Score");
         }
+        
 
-
-
+        /*
         [HttpPost]
         public ActionResult ScoreTake(Score user)
         {
@@ -59,13 +73,15 @@ namespace Typo.Controllers
             return Content(p);
            // return RedirectToView ("ScoreTake", "Score");
         }
+        */
 
         [HttpPost]
         public ActionResult ScoreHigh(Score user)
         {
-            _ScoreServices.ScoreHigh(user.userId);
-
-            return RedirectToAction("ScoreTake", "Score");
+            var i = _ScoreServices.ScoreHigh(user.userId);
+            string p = i.score;
+            return Content(p);
+            return RedirectToAction("ScoreHigh", "Score");
         }
 
 
@@ -73,17 +89,19 @@ namespace Typo.Controllers
 
 
 
-        /*
+        
 
         [HttpPost]
         public ActionResult ScoreAvg(Score user)
         {
-            _ScoreServices.ScoreAvg(user.userId);
+            var i = _ScoreServices.ScoreAvg(user.userId);
+            string p = i.score;
+            return Content(p);
 
-            return RedirectToAction("ScoreTake", "Score");
+           // return RedirectToAction("ScoreAvg", "Score");
         }
 
-        */
+        
 
 
 
@@ -92,9 +110,11 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult ScoreCurrent(Score user)
         {
-            _ScoreServices.ScoreCurrent(user.userId);
+            var i = _ScoreServices.ScoreCurrent(user.userId);
+            string p = i.score;
+            return Content(p);
 
-            return RedirectToAction("ScoreTake", "Score");
+            //return RedirectToAction("ScoreCurrent", "Score");
         }
     }
 }
