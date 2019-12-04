@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Connection.cs" />
     <Compile Include="Database\AccountSQL.cs" />
+    <Compile Include="Database\KeySQL.cs" />
     <Compile Include="Database\ScoreSQL.cs" />
     <Compile Include="Interfaces\ICrud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

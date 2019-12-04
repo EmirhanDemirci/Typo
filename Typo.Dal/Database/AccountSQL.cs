@@ -46,7 +46,9 @@ namespace Typo.Dal.Database
                     {
                         UserId = reader.GetInt32(0),
                         MailUser = reader.GetString(1),
-                        Password = reader.GetString(2)
+                        Password = reader.GetString(2),
+                        FirstName = reader.GetString(3),
+                        LastName = reader.GetString(4)
                     };
                 }
             }

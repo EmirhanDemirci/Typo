@@ -5,14 +5,16 @@
     ViewBag.Title = "Home Page";
 }
 @{
-    string LoggedUser = "";
+    string firstName = "";
+    string lastName = "";
     if (Request.Cookies["UserInfo"] != null)
     {
         var user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
-        LoggedUser = user.MailUser;
+        firstName = user.FirstName;
     }
 }
-    <h1>@LoggedUser</h1>
+<h1>@firstName</h1>
+<h1>@lastName</h1>
 
 
 <div class="jumbotron">
