@@ -35,32 +35,7 @@ namespace Typo.Controllers
         {
             _accountServices.Register(account.MailUser, account.Password, account.FirstName, account.LastName, account.BirthDate);
 
-            return RedirectToAction("Register", "Account");
-        }
-
-        [HttpPost]
-        public ActionResult Login(Account account)
-        {
-            //account.password = null;
-            Account newAccount;
-            try { newAccount = _accountServices.Login(account.MailUser, account.Password);}
-            catch (Exception e)
-            {
-                ViewData["Message"] = e.Message;
-                return View();
-            }
-            if (newAccount != null) 
-            {
-                HttpCookie cookie = new HttpCookie("UserInfo");
-                string userJson = JsonConvert.SerializeObject(newAccount);
-                cookie.Value = userJson;
-                //cookie["Password"] = account.password;
-                cookie.Expires.AddDays(1);
-                Response.Cookies.Add(cookie);
-                return RedirectToAction("Index", "Home");
-            }
-            return RedirectToAction("LogIn", "Account");
-
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult LogOut()
@@ -72,7 +47,7 @@ namespace Typo.Controllers
                 Response.Cookies.Add(c);
             }
 
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
