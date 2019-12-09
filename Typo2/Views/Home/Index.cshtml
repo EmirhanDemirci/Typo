@@ -5,11 +5,14 @@
     ViewBag.Title = "Home Page";
 }
 @{
-    string LoggedUser = "";
+    string firstName = "";
+    string lastName = "";
+    var adminLogin = 0;
     if (Request.Cookies["UserInfo"] != null)
     {
         var user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
-        LoggedUser = user.MailUser;
+        firstName = user.FirstName;
+        adminLogin = user.IsAdmin;
     }
 }
 
@@ -34,8 +37,16 @@
                 <a href="#features" class="menu-features">FEATURES</a>
                 <a href="#benefits" class="menu-benefits">VOORDELEN</a>
                 <a href="#contact" class="menu-contact">CONTACT</a>
-                <a class="login-form">@Html.ActionLink("KOOP NU!", "purchase", "Home")</a>
-                @if (LoggedUser == "")
+                @if (adminLogin == 0)
+                {
+                    <a class="login-form">@Html.ActionLink("KOOP NU!", "purchase", "Home")</a>
+                }
+                else
+                {
+                    <a class="login-form">@Html.ActionLink("ADMIN!", "purchase", "Home")</a>
+                }
+
+                @if (firstName == "")
                 {
                     <a href="#" class="login">LOG IN</a>
                 }
@@ -68,7 +79,7 @@
         </div>
     </div>
 </nav>
-Logged user: <h1>@LoggedUser</h1>
+Logged user: <h1>@firstName</h1>
 <div class="about-container" id="about">
     <h2>Over ons</h2>
     <h1>Leer typen met TYPO</h1>
