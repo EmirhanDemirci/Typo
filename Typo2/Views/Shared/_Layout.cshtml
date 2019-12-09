@@ -1,14 +1,4 @@
-﻿@using Newtonsoft.Json
-@using Typo.Model.Models
-@model Typo.Model.Models.Account
-@{
-    string Loggedin = "";
-    if (Request.Cookies["UserInfo"] != null)
-    {
-        var user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
-        Loggedin = user.MailUser; 
-    }
-}
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,42 +9,9 @@
     <script src="/Scripts/main.js"></script>
 </head>
 <body>
-@*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (Loggedin == "")
-                    {
-                        <li>@Html.ActionLink("Login", "LogIn", "Account")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Logout", "LogOut", "Account")</li>
-                    }
-                    @if (Loggedin == "")
-                    {
-                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                    }
-                </ul>
-            </div>
-        </div>
-    </div>*@
 
 @RenderBody()
-@*<footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
+
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)

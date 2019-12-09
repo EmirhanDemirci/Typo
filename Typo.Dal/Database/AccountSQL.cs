@@ -48,7 +48,8 @@ namespace Typo.Dal.Database
                         MailUser = reader.GetString(1),
                         Password = reader.GetString(2),
                         FirstName = reader.GetString(3),
-                        LastName = reader.GetString(4)
+                        LastName = reader.GetString(4),
+                        IsAdmin = reader.GetInt32(8)
                     };
                 }
             }
@@ -56,24 +57,25 @@ namespace Typo.Dal.Database
             return account;
         }
 
-        public void Register(string mailUser, string password, string firstname, string lastname, DateTime birthdate)
+        public void Register(string mailUser, string password, string firstname, string lastname, DateTime birthdate, int isAdmin)
         {
-            var query = "INSERT INTO Account(MailUser, Password, FirstName, LastName, BirthDate) VALUES('{0}', '{1}', '{2}', '{3}', '{4}')";
-            var queryFull = string.Format(query, mailUser, password, firstname, lastname, birthdate);
-            MssqlConnectionString.Open();
-            using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
-            {
-                try
+                var query = "INSERT INTO Account(MailUser, Password, FirstName, LastName, BirthDate, IsAdmin) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')";
+                var queryFull = string.Format(query, mailUser, password, firstname, lastname, birthdate, isAdmin);
+                MssqlConnectionString.Open();
+                using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
                 {
-                    cmd.ExecuteNonQuery();
-                    MssqlConnectionString.Close();
-                }
-                catch
-                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        MssqlConnectionString.Close();
+                    }
+                    catch
+                    {
 
-                    MssqlConnectionString.Close();
+                        MssqlConnectionString.Close();
+                    }
                 }
-            }
         }
+            
     }
 }

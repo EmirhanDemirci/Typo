@@ -33,7 +33,7 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult Register(Account account)
         {
-            _accountServices.Register(account.MailUser, account.Password, account.FirstName, account.LastName, account.BirthDate);
+            _accountServices.Register(account.MailUser, account.Password, account.FirstName, account.LastName, account.BirthDate, account.IsAdmin);
 
             return RedirectToAction("Index", "Home");
         }

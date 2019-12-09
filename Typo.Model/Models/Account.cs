@@ -24,6 +24,7 @@ namespace Typo.Model.Models
         public string LicenseKey { get; set; }
         [Required]
         public DateTime LicenseDate { get; set; }
+        public int IsAdmin { get; set; }
     }
 }
 
