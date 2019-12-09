@@ -13,34 +13,156 @@
         firstName = user.FirstName;
     }
 }
-<h1>@firstName</h1>
-<h1>@lastName</h1>
 
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
+@*<head>
+    <title>TYPO</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap" rel="stylesheet">
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="/Scripts/main.js"></script>
+</head>*@
+
+<nav>
+    <div class="menu-container">
+        <div class="logo">
+            <img id="logo" src="/images/logo.png" />
+        </div>
+        <div class="menu">
+            <div class="menu-content">
+                <a href="#about" class="menu-about">OVER ONS</a>
+                <a href="#features" class="menu-features">FEATURES</a>
+                <a href="#benefits" class="menu-benefits">VOORDELEN</a>
+                <a href="#contact" class="menu-contact">CONTACT</a>
+                <a class="login-form">@Html.ActionLink("KOOP NU!", "purchase", "Home")</a>
+                @if (LoggedUser == "")
+                {
+                    <a href="#" class="login">LOG IN</a>
+                }
+                else
+                {
+                    <a class="login-form">@Html.ActionLink("LOGOUT", "LogOut", "Account")</a>
+                }
+                @*<a href="#" class="login">LOG⠀IN</a>*@
+            </div>
+            <div class="arrow"></div>
+        </div>
+        <div class="login-form">
+            <form method="post">
+                <div class="well">
+                    <div class="form-group">
+                        <label>E-mail:</label>
+                        <input name="MailUser" type="email" class="form-control" placeholder="Your Email." required />
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input name="Password" type="password" class="form-control" placeholder="Your Password." required />
+                    </div>
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </div>
+                <div class="register">
+                    @*<a href="register.cshtml">Geen account? Registreer hier</a>*@
+                    <a> @Html.ActionLink("Geen account? Registreer hier", "Register", "Account")</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+Logged user: <h1>@LoggedUser</h1>
+<div class="about-container" id="about">
+    <h2>Over ons</h2>
+    <h1>Leer typen met TYPO</h1>
+    <hr class="heading-line">
+    <div class="about-content">
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Tegenwoordig wordt er verwacht dat alles digitaal en online wordt gedaan. Hiervoor moet iemand redelijk overweg kunnen gaan met computers. Om die reden worden er op de basisschool van jongs af aan al blind-typ-cursussen gegeven. Dit is echter niet altijd zo geweest, waardoor er veel mensen zijn die deze vaardigheid niet bezitten.
+            <br><br>
+            Daarom hebben wij als TYPO een product ontwikkeld dat voor iedereen beschikbaar is. Ons product is met meerdere varianten opgezet en dat maakt het een optie voor alle leeftijdsgroepen. Kinderen kunnen leren typen door spellen te spelen, met een steeds toenemende moeilijkheidsgraad. Hiernaast zijn de spellen ook goed te begrijpen, waardoor ouderen ook makkelijk gebruik kunnen maken van ons product. Voor ons is het belangrijk dat onze spellen uitdaging en plezier voor alle leeftijden bieden.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</div>
+<div class="about-image"></div>
+<div class="bg-image">
+    <div class="feature-one">
+        <div class="feature-alignment" id="features">
+            <img class="icon" src="/images/icon.png" />
+            <h1 style="color:#e4e3dd;">VARIANTEN</h1>
+            <hr class="feature-line">
+        </div>
+        <p>
+            Keuze uit meerdere spellen.<br><br>
+            Voor ons is het belangrijk dat onze spellen uitdaging en plezier voor alle leeftijden bieden. Kies het spel uit dat het beste bij je past en leer gemakkelijk blind te typen.
+        </p>
+        <br><br><br><img class="placeholder2" src="/images/placeholder-image.png">
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="feature-two">
+        <div class="feature-alignment">
+            <img class="icon" src="/images/icon.png" />
+            <h1 style="color:#e4e3dd;">NIVEAUS</h1>
+            <hr class="feature-line">
+        </div>
+        <p>
+            Verschillende niveaus.<br><br>
+            Nog nooit leren typen? Geen probleem! In onze spellen heb je keuze uit meerdere moeilijkheidsgraden en typsnelheden, zo kun je een niveau uitkiezen dat bij jou past.
+        </p>
+        <br><br><br><img class="placeholder2" src="/images/placeholder-image.png">
     </div>
+    <div class="feature-three">
+        <div class="feature-alignment">
+            <img class="icon" src="/images/icon.png" />
+            <h1 style="color:#e4e3dd;">VISUALISATIE</h1>
+            <hr class="feature-line">
+        </div>
+        <p>
+            Voortgang met eigen ogen zien.<br><br>
+            Wij bieden onze gebruikers de kans aan om hun resultaten te laten visualeren met een fysieke baan en auto’s. Blind leren typen is nog nooit zo leuk geweest!
+        </p>
+        <br><br><br><img class="placeholder2" src="/images/placeholder-image.png">
+    </div>
+</div>
+<div class="benefits-image"></div>
+<div class="benefits" id="benefits">
+    <h2>Voordelen</h2>
+    <h1>Waarom ons product?</h1>
+    <hr class="heading-line">
+    <div class="benefits-list">
+        <li>Snel & gemakkelijk</li>
+        <li>Leuk voor iedereen</li>
+        <li>Unieke spelvorm</li>
+    </div>
+</div>
+<img class="rectangle-image" src="/images/rectangle-image.jpg" />
+<div class="contact" id="contact">
+    <h2>Contact</h2>
+    <h1>Neem contact met ons op</h1>
+    <hr class="heading-line">
+    <p class="contact-text">Alles met een * is verplicht.</p>
+    <form>
+        <label for="name">Naam*</label>
+        <input type="text2" id="name" name="name" placeholder="Uw naam">
+        <label for="email">E-mail*</label>
+        <input type="text2" id="email" name="email" placeholder="Uw e-mailadres">
+        <label for="subject">Onderwerp</label>
+        <input type="text2" id="subject" name="subject" placeholder="Uw onderwerp">
+        <label for="message">Bericht</label>
+        <textarea id="message" class="contact-message" name="message" placeholder="Uw bericht" style="height:200px"></textarea>
+        <input type="submit2" value="Verzenden">
+    </form>
+</div>
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.330293480661!2d5.479793915938489!3d51.45209192256635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6d92199730073%3A0x1c98f3a0d8ee087b!2sFontys%20Hogescholen!5e0!3m2!1snl!2snl!4v1574208641587!5m2!1snl!2snl" width="500" height="484" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+</div>
+<div class="footer">
+    <div class="footer-text">
+        <strong>Adres</strong><br>
+        Fontys Hogescholen<br>
+        Rachelsmolen, 5612 MA Eindhoven<br><br>
+        <strong>Telefoon: </strong><a href="tel:088-508-0000">088-508-0000</a><br><br>
+        <strong>Support: </strong><a href="mailto:Typo@fontys.nl">Typomailservice@gmail.nl</a><br>
+        <strong>Marketing: </strong><a href="mailto:Typo@marketing.nl">Typo@marketing.nl</a>
+    </div>
+</div>
+<div class="footer-2">
+    © 2019 TYPO
 </div>

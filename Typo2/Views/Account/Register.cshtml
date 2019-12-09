@@ -1,7 +1,7 @@
 ﻿@model Typo.Model.Models.Account
-<div class="page-header">
-    <h1>Register <small>to get access to the website</small></h1>
-</div>
+<head>
+    <link rel="stylesheet" href="/styles/register.css">
+</head>
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
@@ -9,31 +9,27 @@
                 <form method="post">
                     <div class="well">
                         <div class="form-group">
-                            @* <h3 style="line-height: 20%;"><i class="fa fa-home fa-1x" style="line-height: 6%; color: #339966"></i> FirstName:</h3> *@
-                            <label>E-mail:</label>
-                            <input name="MailUser" type="email" class="form-control" placeholder="Your Email." required />
+                            <label>E-mail</label>
+                            <input id="form-control" name="MailUser" type="email" class="form-control" placeholder="Uw e-mailadres" required />
                         </div>
                         <div class="form-group">
-                            @* <h3 style="line-height: 20%;"><i class="fa fa-envelope fa-1x" style="line-height: 6%; color: #339966"></i> LastName:</h3> *@
-                            <label>Password:</label>
-                            <input name="Password" type="password" class="form-control" placeholder="Your Password." required />
+                            <label>Wachtwoord</label>
+                            <input id="form-control" name="Password" type="password" class="form-control" placeholder="Uw wachtwoord" required />
                         </div>
                         <div class="form-group">
-                            @* <h3 style="line-height: 20%;"><i class="fa fa-envelope fa-1x" style="line-height: 6%; color: #339966"></i> LastName:</h3> *@
-                            <label>FirstName</label>
-                            <input name="FirstName" type="text" class="form-control" placeholder="Your FirstName." required />
+                            <label>Voornaam</label>
+                            <input name="FirstName" type="text" class="form-control" placeholder="Uw voornaam" required />
                         </div>
                         <div class="form-group">
-                            @* <h3 style="line-height: 20%;"><i class="fa fa-envelope fa-1x" style="line-height: 6%; color: #339966"></i> LastName:</h3> *@
-                            <label>Lastname</label>
-                            <input name="LastName" type="text" class="form-control" placeholder="Your LastName." required />
 
+                            <label>Achternaam</label>
+                            <input name="LastName" type="text" class="form-control" placeholder="Uw achternaam" required />
                         </div>
                         <div class="form-group">
-                            <label>BirthDate</label>
-                            <input name="BirthDate" type="date" class="form-control" placeholder="Your BirthDate." required/>
+                            <label>Geboortedatum</label>
+                            <input name="BirthDate" type="date" class="form-control" placeholder="Uw Geboortedatum" required/>
                         </div>
-                        <button class="btn btn-info" type="submit">Register</button>
+                        <button class="btn btn-info" id="button" type="submit">Registreer</button>
                     </div>
                 </form>
             </div>
