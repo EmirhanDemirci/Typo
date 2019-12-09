@@ -49,7 +49,7 @@ namespace Typo.Dal.Database
                         Password = reader.GetString(2),
                         FirstName = reader.GetString(3),
                         LastName = reader.GetString(4),
-                        IsAdmin = reader.GetInt32(8)
+                        IsAdmin = reader.GetInt32(6)
                     };
                 }
             }
