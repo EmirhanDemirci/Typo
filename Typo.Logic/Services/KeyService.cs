@@ -14,10 +14,8 @@ namespace Typo.Logic.Services
         {
             _keySql = new KeySQL();
         }
-        public void GenerateKey(string key)
+        public void GenerateKey(string key, int userId)
         {
-            for (int i = 0; i < 10; i++)
-            {
                 var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
                 var stringChars = new char[8];
                 var random = new Random();
@@ -29,8 +27,7 @@ namespace Typo.Logic.Services
 
                 var finalString = new String(stringChars);
                 key = finalString;
-                _keySql.GenerateKey(key);
-            }
+                _keySql.GenerateKey(key, userId);
         }
     }
 }

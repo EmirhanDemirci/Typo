@@ -163,6 +163,7 @@
     <Content Include="styles\index.css" />
     <Content Include="styles\purchase.css" />
     <Content Include="styles\register.css" />
+    <Content Include="Views\Home\Admin.cshtml" />
     <None Include="Views\Home\purchase.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
