@@ -67,5 +67,27 @@ namespace Typo.Controllers
 
             return View();
         }
+        public ActionResult Admin(Account account)
+        {
+            Account newAccount;
+            try { newAccount = _accountServices.Login(account.MailUser, account.Password); }
+            catch (Exception e)
+            {
+                ViewData["Message"] = e.Message;
+                return RedirectToAction("Index", "Home");
+            }
+
+            if (newAccount.IsAdmin == 1)
+            {
+                return View();
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult Admin()
+        {
+            //HttpCookie cookie = Request.Cookies["UserInfo"];
+            return View();
+        }
     }
 }

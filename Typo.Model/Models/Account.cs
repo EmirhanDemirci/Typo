@@ -20,10 +20,6 @@ namespace Typo.Model.Models
         public string LastName { get; set; }
         [Required]
         public DateTime BirthDate { get; set; }
-        [Required]
-        public string LicenseKey { get; set; }
-        [Required]
-        public DateTime LicenseDate { get; set; }
         public int IsAdmin { get; set; }
     }
 }
