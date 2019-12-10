@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Typo.Dal.Database;
+using Typo.Model.Models;
 
 namespace Typo.Logic.Services
 {
@@ -28,6 +31,16 @@ namespace Typo.Logic.Services
                 var finalString = new String(stringChars);
                 key = finalString;
                 _keySql.GenerateKey(key, userId);
+        }
+        public Key CheckLicense(int userId)
+        {
+            if (userId != null)
+            {
+                var key = _keySql.CheckKey(userId);
+                return key;
+            }
+            return null;
+         
         }
     }
 }

@@ -8,7 +8,10 @@ namespace Typo.Model.Models
 {
     public class Key
     {
+        public int LicenseId { get; set; }
+        public int UserId { get; set; }
         public string LicenseKey { get; set; }
         public DateTime LicenseDate { get; set; }
+
     }
 }
