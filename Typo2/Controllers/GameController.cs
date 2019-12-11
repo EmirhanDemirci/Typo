@@ -11,7 +11,14 @@ namespace Typo.Controllers
         // GET: Game
         public ActionResult TypeRacer()
         {
-            return View();
+            if (Request.Cookies["LicenseInfo"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

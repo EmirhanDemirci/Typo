@@ -1,7 +1,21 @@
-﻿
+﻿@using Newtonsoft.Json
+@using Typo.Model.Models
+@model Typo.Model.Models.Key
 @{
-    ViewBag.Title = "TypeRacer";
+    ViewBag.Title = "Home Page";
+}
+@{
+    string expireDate = "";
+    string Key = "";
+    if (Request.Cookies["UserInfo"] != null)
+    {
+        var keyInfo = JsonConvert.DeserializeObject<Key>(Request.Cookies["LicenseInfo"].Value);
+        Key = keyInfo.LicenseKey;
+        expireDate = keyInfo.LicenseDate.Date.ToString("dd/MM/yyyy");
+    }
 }
 
 <h2>TypeRacer</h2>
+<h1>Uw Licentie: @Key</h1>
+<h1>Datum einde licentie: @expireDate</h1>
 

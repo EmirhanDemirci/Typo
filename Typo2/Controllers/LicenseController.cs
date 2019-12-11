@@ -31,5 +31,27 @@ namespace Typo2.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult CheckLicense()
+        {
+            Account user;
+            Key key;
+            key = null;
+            if (Request.Cookies["UserInfo"] != null)
+            {
+                user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
+                key = _keyServices.CheckLicense(user.UserId);
+                if (key != null)
+                {
+                    HttpCookie cookie = new HttpCookie("LicenseInfo");
+                    string userJson = JsonConvert.SerializeObject(key);
+                    cookie.Value = userJson;
+                    //cookie["Password"] = account.password;
+                    cookie.Expires.AddDays(1);
+                    Response.Cookies.Add(cookie);
+                    return RedirectToAction("Typeracer", "Game");
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
