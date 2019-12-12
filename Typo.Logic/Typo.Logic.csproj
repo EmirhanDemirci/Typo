@@ -52,6 +52,7 @@
     <Compile Include="Services\ScoreService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagramLogic.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
