@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,6 +20,16 @@ namespace Typo.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+        }
+        public ActionResult GetExcelFile()
+        {
+            var fileDownloadName = "GuessTheNumber.exe";
+            var contentType = "application/vnd.microsoft.portable-executable";
+
+            var fileStream = new MemoryStream();
+            fileStream.Position = 0;
+
+            return File(fileStream, contentType, fileDownloadName);
         }
     }
 }
