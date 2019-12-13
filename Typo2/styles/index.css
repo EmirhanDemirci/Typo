@@ -167,7 +167,7 @@ nav {
     right: -241px;
     top: 54px;
     border-radius: 3px;
-    border-bottom: 4px solid #00b19e;
+    /*border-bottom: 4px solid #00b19e;*/
 }
 
 .login-form > form {

@@ -21,6 +21,7 @@ namespace Typo.Model.Models
         [Required]
         public DateTime BirthDate { get; set; }
         public int IsAdmin { get; set; }
+        public int IsDocent { get; set; }
     }
 }
 

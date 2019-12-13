@@ -49,7 +49,8 @@ namespace Typo.Dal.Database
                         Password = reader.GetString(2),
                         FirstName = reader.GetString(3),
                         LastName = reader.GetString(4),
-                        IsAdmin = reader.GetInt32(6)
+                        IsAdmin = reader.GetInt32(6),
+                        IsDocent = reader.GetInt32(7)
                     };
                 }
             }
@@ -57,10 +58,10 @@ namespace Typo.Dal.Database
             return account;
         }
 
-        public void Register(string mailUser, string password, string firstname, string lastname, DateTime birthdate, int isAdmin)
+        public void Register(string mailUser, string password, string firstname, string lastname, DateTime birthdate, int isAdmin, int isDocent)
         {
-                var query = "INSERT INTO Account(MailUser, Password, FirstName, LastName, BirthDate, IsAdmin) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')";
-                var queryFull = string.Format(query, mailUser, password, firstname, lastname, birthdate, isAdmin);
+                var query = "INSERT INTO Account(MailUser, Password, FirstName, LastName, BirthDate, IsAdmin, IsDocent) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')";
+                var queryFull = string.Format(query, mailUser, password, firstname, lastname, birthdate, isAdmin, isDocent);
                 MssqlConnectionString.Open();
                 using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
                 {

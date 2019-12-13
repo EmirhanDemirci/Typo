@@ -4,7 +4,7 @@ $(document).ready(function() {
     var status = false;
     $(".login").click(function(event) {
         event.preventDefault();
-        if(status == false) {
+        if(status === false) {
             arrow.toggle();
             form.toggle();
             status = true;

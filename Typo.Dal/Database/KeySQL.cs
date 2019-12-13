@@ -12,8 +12,11 @@ namespace Typo.Dal.Database
     {
         public void GenerateKey(string key, int userId)
         {
+            var date = DateTime.Today;
+            var dateNextYear = date.AddYears(1);
+            var datetime = dateNextYear.ToString("MM/dd/yyyy");
             var query = "INSERT INTO License(UserId, LicenseKey, ExpireDate) VALUES('{0}','{1}','{2}')";
-            var queryFull = string.Format(query, userId, key, DateTime.Today.AddYears(1));
+            var queryFull = string.Format(query, userId, key, datetime);
             MssqlConnectionString.Open();
             using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
             {

@@ -28,11 +28,11 @@ namespace Typo.Logic.Services
             return null;
         }
 
-        public void Register(string username, string password, string firstname, string lastname, DateTime birthdate, int IsAdmin)
+        public void Register(string username, string password, string firstname, string lastname, DateTime birthdate, int IsAdmin, int IsDocent)
         {
             if (username != null || password != null)
             {
-                _accountSql.Register(username, password, firstname, lastname, birthdate, IsAdmin);
+                _accountSql.Register(username, password, firstname, lastname, birthdate, IsAdmin, IsDocent);
             }
         }
     }

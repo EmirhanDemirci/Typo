@@ -38,7 +38,6 @@ namespace Typo.Controllers
                 Response.Cookies.Add(cookie);
                 return RedirectToAction("Index", "Home");
             }
-
             return View();
 
         }
@@ -78,8 +77,19 @@ namespace Typo.Controllers
                     return View();
                 }
             }
-
-
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult Docent()
+        {
+            Account user;
+            if (Request.Cookies["UserInfo"] != null)
+            {
+                user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
+                if (user.IsDocent == 1)
+                {
+                    return View();
+                }
+            }
             return RedirectToAction("Index", "Home");
         }
     }
