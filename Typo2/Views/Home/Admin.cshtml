@@ -21,7 +21,9 @@
                 </tr>
                 @foreach (var d in Model)
                 {
-                    <tr>
+                    <tr id="userRow-@d.UserId">
+
+                        <input name="UserId" id="@d.UserId" hidden/>
                         <td>@d.UserId</td>
                         <td>@d.MailUser</td>
                         <td>@d.Password</td>
@@ -30,8 +32,9 @@
                         <td>@d.BirthDate</td>
                         <td>@d.IsDocent</td>
                         <td>@d.IsAdmin</td>
-                        <td><button type="submit" class="btn btn-info">Delete!</button></td>
+                        <td><button onclick="DeleteRow('@d.UserId')" id="delete-@d.UserId" type="submit" class="btn btn-danger">Delete!</button></td>
                     </tr>
+                   
                 }
             </table>
         </div>

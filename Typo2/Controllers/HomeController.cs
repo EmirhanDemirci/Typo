@@ -87,10 +87,18 @@ namespace Typo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Admin(Account account)
+        public JsonResult Admin(Account account)
         {
-            _adminServices.DeleteAccount(account.UserId);
-            return RedirectToAction("Admin", "Home");
+            try
+            {
+                _adminServices.DeleteAccount(account.UserId);
+                return Json("success");
+            }
+            catch (Exception e)
+            {
+                return Json("error");
+            }
+           
         }
         public ActionResult Docent()
         {
