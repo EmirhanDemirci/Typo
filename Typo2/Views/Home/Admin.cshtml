@@ -1,7 +1,41 @@
-﻿
+﻿@model IEnumerable<Typo.Model.Models.Account>
 @{
     ViewBag.Title = "Admin";
 }
 
 <h2>Admin</h2>
+
+<form method="post">
+    <div class="well">
+        <div class="form-group">
+            <table>
+                <tr>
+                    <th>UserId</th>
+                    <th>MailUser</th>
+                    <th>Password</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>BirthDate</th>
+                    <th>Docent</th>
+                    <th>Admin</th>
+                </tr>
+                @foreach (var d in Model)
+                {
+                    <tr>
+                        <td>@d.UserId</td>
+                        <td>@d.MailUser</td>
+                        <td>@d.Password</td>
+                        <td>@d.FirstName</td>
+                        <td>@d.LastName</td>
+                        <td>@d.BirthDate</td>
+                        <td>@d.IsDocent</td>
+                        <td>@d.IsAdmin</td>
+                        <td><button type="submit" class="btn btn-info">Delete!</button></td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+</form>
 
