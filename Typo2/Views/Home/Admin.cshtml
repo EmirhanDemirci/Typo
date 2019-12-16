@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Typo.Model.Models.Account>
+﻿@using Typo.Model.Models
+@model List<Typo.Model.Models.Account>
 @{
     ViewBag.Title = "Admin";
 }
@@ -19,23 +20,30 @@
                     <th>Docent</th>
                     <th>Admin</th>
                 </tr>
-                @foreach (var d in Model)
+                @for (int i = 0; i < Model.Count(); i++)
                 {
-                    <tr id="userRow-@d.UserId">
+            <tr id="userRow-@Model[i].UserId">
+                @*@Html.HiddenFor(model => d.UserId);*@
+                <input asp-for="UserId" name="UserId" id="UserId" type="number" value="@Model[i].UserId" hidden />
+                <td>@Model[i].UserId</td>
+                <td>@Model[i].MailUser</td>
+                <td>@Model[i].Password</td>
+                <td>@Model[i].FirstName</td>
+                <td>@Model[i].LastName</td>
+                <td>@Model[i].BirthDate</td>
+                <td>@Model[i].IsDocent</td>
+                <td>@Model[i].IsAdmin</td>
 
-                        <input name="UserId" id="@d.UserId" hidden/>
-                        <td>@d.UserId</td>
-                        <td>@d.MailUser</td>
-                        <td>@d.Password</td>
-                        <td>@d.FirstName</td>
-                        <td>@d.LastName</td>
-                        <td>@d.BirthDate</td>
-                        <td>@d.IsDocent</td>
-                        <td>@d.IsAdmin</td>
-                        <td><button onclick="DeleteRow('@d.UserId')" id="delete-@d.UserId" type="submit" class="btn btn-danger">Delete!</button></td>
-                    </tr>
-                   
+                <td>
+                    <input id="delete-@Model[i].UserId" name="UserId" type="submit" value="DELETE!" />
+                </td>
+            </tr>
                 }
+                @*@foreach (Account d in Model)
+                {
+            
+                   
+                }*@
             </table>
         </div>
 

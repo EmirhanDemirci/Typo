@@ -91,7 +91,7 @@ namespace Typo.Controllers
         {
             try
             {
-                _adminServices.DeleteAccount(account.UserId);
+                //_adminServices.DeleteAccount(account.UserId);
                 return Json("success");
             }
             catch (Exception e)
