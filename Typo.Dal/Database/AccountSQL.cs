@@ -96,7 +96,7 @@ namespace Typo.Dal.Database
 
         public List<Account> GetAllData()
         {
-            Account account = null;
+            Account account;
             List<Account> accounts = new List<Account>();
             var query = "Select * FROM Account";
             var queryFull = string.Format(query);
