@@ -16,23 +16,27 @@ $(document).ready(function() {
     });
 });
 
-
-$(function () {
-
-    $('input[name="command"]').click(function () {
-        // because there is a command button on each row it is important to
-        // retrieve the id that is in the same row as the button
-        $('#UserId').val($(this).parents('tr:first').children('td:first').html());
-
-    });
-
-});
-
 function DeleteUser(user) {
+    var coinId = "#delete-";
+    var fullCoinId = coinId.concat(user);
     var deleteUser = {
-        UserId: $(user).val()
-    };
+        UserId: $(fullCoinId).val()
 
+    };
+    if (returned === "success") {
+        Swal.fire(
+            'Good job!',
+            'You clicked the button!',
+            'success'
+        );
+
+    } else {
+        Swal.fire(
+            'Good job!',
+            'You clicked the button!',
+            'success'
+        );
+    }
     $.ajax({
         type: "POST",
         url: "Admin",
@@ -40,11 +44,7 @@ function DeleteUser(user) {
         dataType: "json",
         data: deleteUser,
         success: function (returned) {
-            //if (returned === "success") {
-            //    swal("Success", "You successfully deleted the coin", "success");
-            //} else {
-            //    swal("Error", "Could not delete", "error");
-            //}
+            
         },
         error: function (xhr, textStatus, errorThrown) {
             alert(xhr + " " + textStatus + " " + errorThrown);

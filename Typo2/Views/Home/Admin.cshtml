@@ -6,47 +6,43 @@
 
 <h2>Admin</h2>
 
-<form method="post">
-    <div class="well">
-        <div class="form-group">
-            <table>
-                <tr>
-                    <th>UserId</th>
-                    <th>MailUser</th>
-                    <th>Password</th>
-                    <th>FirstName</th>
-                    <th>LastName</th>
-                    <th>BirthDate</th>
-                    <th>Docent</th>
-                    <th>Admin</th>
-                </tr>
-                @for (int i = 0; i < Model.Count(); i++)
-                {
-            <tr id="userRow-@Model[i].UserId">
-                @*@Html.HiddenFor(model => d.UserId);*@
-                <input asp-for="UserId" name="UserId" id="UserId" type="number" value="@Model[i].UserId" hidden />
-                <td>@Model[i].UserId</td>
-                <td>@Model[i].MailUser</td>
-                <td>@Model[i].Password</td>
-                <td>@Model[i].FirstName</td>
-                <td>@Model[i].LastName</td>
-                <td>@Model[i].BirthDate</td>
-                <td>@Model[i].IsDocent</td>
-                <td>@Model[i].IsAdmin</td>
 
-                <td>
-                    <input id="delete-@Model[i].UserId" name="UserId" type="submit" value="DELETE!" />
-                </td>
+<div class="well">
+    <div class="form-group">
+        <table>
+            <tr>
+                <th>UserId</th>
+                <th>MailUser</th>
+                <th>Password</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>BirthDate</th>
+                <th>Docent</th>
+                <th>Admin</th>
             </tr>
-                }
-                @*@foreach (Account d in Model)
-                {
-            
-                   
-                }*@
-            </table>
-        </div>
+            @foreach (var d in Model)
+            {
+                <form method="post">
+                    <tr id="userRow-@d.UserId">
+                        <input asp-for="UserId" name="UserId" type="number" value="@d.UserId" hidden />
+                        <td>@d.UserId.</td>
+                        <td>@d.MailUser</td>
+                        <td>@d.Password</td>
+                        <td>@d.FirstName</td>
+                        <td>@d.LastName</td>
+                        <td>@d.BirthDate</td>
+                        <td>@d.IsDocent</td>
+                        <td>@d.IsAdmin</td>
 
+                        @*<td>
+                        <button onclick="DeleteRow('@Model[i].UserId')" id="delete-@Model[i].UserId" type="submit">DELETE!</button>
+                    </td>*@
+                        <td>
+                            <button type="submit" id="delete-@d.UserId" class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                </form>
+            }
+        </table>
     </div>
-</form>
-
+</div>

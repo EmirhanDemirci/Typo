@@ -77,7 +77,7 @@ namespace Typo.Dal.Database
         public void Register(string mailUser, string password, string firstname, string lastname, DateTime birthdate, int isAdmin, int isDocent)
         {
                 var query = "INSERT INTO Account(MailUser, Password, FirstName, LastName, BirthDate, IsAdmin, IsDocent) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')";
-                var queryFull = string.Format(query, mailUser, password, firstname, lastname, birthdate, isAdmin, isDocent);
+                var queryFull = string.Format(query, mailUser, password, firstname, lastname, birthdate.ToString("MM/dd/yyyy"), isAdmin, isDocent);
                 MssqlConnectionString.Open();
                 using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
                 {
@@ -126,24 +126,20 @@ namespace Typo.Dal.Database
         public Account DeleteAccount(int userId)
         {
             Account account = null;
-            var query = "Delete * FROM Account WHERE userId = '{0}'";
+            var query = "Delete FROM Account WHERE UserId = '{0}'";
             var queryFull = string.Format(query, userId);
             MssqlConnectionString.Open();
             using (SqlCommand cmd = new SqlCommand(queryFull, MssqlConnectionString))
             {
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                try
                 {
-                    account = new Account()
-                    {
-                        UserId = reader.GetInt32(0),
-                        MailUser = reader.GetString(1),
-                        Password = reader.GetString(2),
-                        FirstName = reader.GetString(3),
-                        LastName = reader.GetString(4),
-                        IsAdmin = reader.GetInt32(6),
-                        IsDocent = reader.GetInt32(7)
-                    };
+                    cmd.ExecuteNonQuery();
+                    MssqlConnectionString.Close();
+                }
+                catch
+                {
+
+                    MssqlConnectionString.Close();
                 }
             }
             MssqlConnectionString.Close();

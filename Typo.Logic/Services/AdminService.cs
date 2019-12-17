@@ -19,7 +19,6 @@ namespace Typo.Logic.Services
 
         public Account DeleteAccount(int userId)
         {
-            _accountSql.GetAllData();
             var account = _accountSql.DeleteAccount(userId);
             return account;
         }
