@@ -22,7 +22,7 @@
             </tr>
             @foreach (var d in Model)
             {
-                <form method="post">
+                <form id="deleteAccount" method="post">
                     <tr id="userRow-@d.UserId">
                         <input asp-for="UserId" name="UserId" type="number" value="@d.UserId" hidden />
                         <td>@d.UserId.</td>
@@ -33,12 +33,11 @@
                         <td>@d.BirthDate</td>
                         <td>@d.IsDocent</td>
                         <td>@d.IsAdmin</td>
-
                         @*<td>
                         <button onclick="DeleteRow('@Model[i].UserId')" id="delete-@Model[i].UserId" type="submit">DELETE!</button>
                     </td>*@
                         <td>
-                            <button type="submit" id="delete-@d.UserId" class="btn btn-danger btn-sm">Delete</button>
+                            <button id="delete-@d.UserId" type="submit" class="btn btn-danger">Delete</button>
                         </td>
                     </tr>
                 </form>

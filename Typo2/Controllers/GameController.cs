@@ -24,10 +24,11 @@ namespace Typo.Controllers
         public ActionResult GetExcelFile()
         {
             var fileDownloadName = "GuessTheNumber.exe";
-            var contentType = "application/vnd.microsoft.portable-executable";
+            var contentType = "application/zip";
 
             var fileStream = new MemoryStream();
             fileStream.Position = 0;
+
 
             return File(fileStream, contentType, fileDownloadName);
         }
