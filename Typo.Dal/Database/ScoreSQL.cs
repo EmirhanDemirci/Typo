@@ -9,7 +9,7 @@ using Typo.Model.Models;
 
 namespace Typo.Dal.Database
 {
-    public class ScoreSQL : Connection, ICrud<Account>
+    public class ScoreSQL : Connection
     {
         public void Create(Account obj)
         {

@@ -11,12 +11,15 @@ namespace Typo.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly AdminService _adminServices;
         private readonly AccountService _accountServices;
-
+     
         public HomeController()
         {
             _accountServices = new AccountService();
+            _adminServices = new AdminService();
         }
+
         [HttpPost]
         public ActionResult Index(Account account)
         {
@@ -68,16 +71,35 @@ namespace Typo.Controllers
         }
         public ActionResult Admin()
         {
-            Account user;
+            
             if (Request.Cookies["UserInfo"] != null)
             {
+                Account user;
                 user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
                 if (user.IsAdmin == 1)
                 {
-                    return View();
+                    List<Account> listAccounts;
+                    listAccounts = _adminServices.GetAllAccounts();
+                    return View(listAccounts);
                 }
             }
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public JsonResult Admin(Account account)
+        {
+            try
+            {
+                _adminServices.DeleteAccount(account.UserId);
+                return Json("success");
+
+            }
+            catch (Exception e)
+            {
+                return Json("error");
+            }
+           
         }
         public ActionResult Docent()
         {

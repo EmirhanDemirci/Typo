@@ -12,6 +12,6 @@ namespace Typo.Dal.Interfaces
         void Create(T obj);
         T Read(T obj);
         void Update(T obj);
-        void Delete(T obj);
+        bool Delete(T obj);
     }
 }

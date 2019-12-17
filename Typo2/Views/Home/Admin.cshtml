@@ -1,7 +1,48 @@
-﻿
+﻿@using Typo.Model.Models
+@model List<Typo.Model.Models.Account>
 @{
     ViewBag.Title = "Admin";
 }
 
 <h2>Admin</h2>
 
+
+<div class="well">
+    <div class="form-group">
+        <table>
+            <tr>
+                <th>UserId</th>
+                <th>MailUser</th>
+                <th>Password</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>BirthDate</th>
+                <th>Docent</th>
+                <th>Admin</th>
+            </tr>
+            @foreach (var d in Model)
+            {
+                <form method="post">
+                    <tr id="userRow-@d.UserId">
+                        <input asp-for="UserId" name="UserId" type="number" value="@d.UserId" hidden />
+                        <td>@d.UserId.</td>
+                        <td>@d.MailUser</td>
+                        <td>@d.Password</td>
+                        <td>@d.FirstName</td>
+                        <td>@d.LastName</td>
+                        <td>@d.BirthDate</td>
+                        <td>@d.IsDocent</td>
+                        <td>@d.IsAdmin</td>
+
+                        @*<td>
+                        <button onclick="DeleteRow('@Model[i].UserId')" id="delete-@Model[i].UserId" type="submit">DELETE!</button>
+                    </td>*@
+                        <td>
+                            <button type="submit" id="delete-@d.UserId" class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                </form>
+            }
+        </table>
+    </div>
+</div>

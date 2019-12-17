@@ -32,15 +32,12 @@ namespace Typo.Logic.Services
                 key = finalString;
                 _keySql.GenerateKey(key, userId);
         }
+
         public Key CheckLicense(int userId)
         {
-            if (userId != null)
-            {
-                var key = _keySql.CheckKey(userId);
-                return key;
-            }
-            return null;
-         
+
+            var key = _keySql.CheckKey(userId);
+            return key;
         }
     }
 }
