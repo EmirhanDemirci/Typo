@@ -13,7 +13,7 @@ p {
 	width:200px;
 	height:100%;
 	display:block;
-	position: fixed;;
+	position: fixed;
 	left:-200px;
 	top:0px;
     transition:left 0.3s linear;
@@ -87,11 +87,6 @@ ul li a:hover {
     transform: scale(1.1);
 }
 
-.login-form.visible{
-	left:0px;
-	transition:left 0.3s linear;
-}
-
 .login-form {
     margin-top: -1px;
     background:#132125;
@@ -100,11 +95,6 @@ ul li a:hover {
 	display: none;
 	padding:10px;
 	text-decoration: none;
-}
-
-.login-form.visible {
-    left:0px;
-    transition:left 0.3s linear;
 }
 
 .login-form > form {
