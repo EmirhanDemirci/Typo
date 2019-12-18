@@ -30,7 +30,7 @@
 
 <nav>
     <div id="sidebar">
-        <a href='@Url.Action("Index", "Home")'><img id="logo" src="images/logo.png" /></a>
+        <a href='@Url.Action("Index", "Home")'><img id="logo" src="~/images/logo.png" /></a>
 
         <ul>
             <div class="logged-user">
@@ -42,20 +42,20 @@
             <li><a href="#contact">Contact</a></li>
             @if (adminLogin == 0)
             {
-                <li><a class="login-form1">@Html.ActionLink("KOOP NU!", "purchase", "Home")</a></li>
+                <li><a class="login-form1">@Html.ActionLink("Koop nu", "purchase", "Home")</a></li>
             }
             else
             {
-                <li><a class="login-form1">@Html.ActionLink("ADMIN!", "purchase", "Home")</a></li>
+                <li><a class="login-form1">@Html.ActionLink("ADMIN!", "Admin", "Home")</a></li>
             }
 
             @if (firstName == "")
             {
-                <li><a href="#" id="login">LOG IN</a></li>
+                <li><a href="#" id="login">Account</a></li>
             }
             else
             {
-                <li><a class="login-form1">@Html.ActionLink("LOGOUT", "LogOut", "Account")</a></li>
+                <li><a class="login-form1">@Html.ActionLink("Log uit", "LogOut", "Account")</a></li>
             }
             <div class="login-form">
                 <form method="post">
@@ -85,23 +85,23 @@
     </div>
 </nav>
 <div class="header">
-    PLACEHOLDER FOR ANIMATED HEADER
+    <img src="~/images/header.jpg" />
 </div>
 
 <div class="header-transition">
     <div class="transition-img-1">
         <div class="transition-img-container">
-            <img class="transition-img" src="~/images/Squidward.jpg">
+            <img class="transition-img" src="~/images/typing.jpg">
         </div>
     </div>
     <div class="transition-img-2">
         <div class="transition-img-container">
-            <img class="transition-img" src="~/images/Squidward.jpg">
+            <img class="transition-img" src="~/images/toycar2.jpg">
         </div>
     </div>
     <div class="transition-img-3">
         <div class="transition-img-container">
-            <img class="transition-img" src="~/images/Squidward.jpg">
+            <img class="transition-img" src="~/images/racetrack.jpg">
         </div>
     </div>
 </div>
@@ -112,7 +112,7 @@
         <h2>OVER ONS</h2>
     </div>
     <div class="about-h1">
-        <h1>Wij zijn TYPO – een bedrijf dat typ cursussen ontwikkelt, gericht op het maken van educatieve videogames  voor zowel professioneel als privégebruik.</h1>
+        <h1>Wij zijn TYPO – een bedrijf dat typecursussen ontwikkelt, gericht op het maken van educatieve videogames  voor zowel professioneel als privégebruik.</h1>
     </div>
     <div class="about-text1">
         <p>Onze games gaan zowel kinderen als volwassen de vaardigheid van blind typen leren, een noodzaak in de digitale samenleving van vandaag.</p>
@@ -124,23 +124,24 @@
 
 <div id="features" class="features-container">
     <div class="features-block">
-        <h3>TYPO biedt een typ cursus aan voor jong en oud.</h3>
+        <h3>TYPO biedt een typecursus aan voor jong en oud.</h3>
     </div>
     <div class="features-img-container1">
-        <img class="features-img" src="/images/placeholder-image.png">
+        <img class="features-img" src="~/images/varianten.jpg">
     </div>
     <div class="features-text1">
-        <h1>02.</h1>
-        <h2>niveaus</h2>
-        <p>Nog nooit leren typen?<br> Geen probleem! In onze games heb je keuze uit meerdere moeilijkheden en typsnelheden, zo kun je een passend niveau uitkiezen.</p>
-    </div>
-    <div class="features-img-container2">
-        <img class="features-img" src="/images/placeholder-image.png">
-    </div>
-    <div class="features-text2">
         <h1>01.</h1>
         <h2>varianten</h2>
         <p>Voor ons is het belangrijk dat onze spellen uitdaging en plezier voor alle leeftijden bieden. Kies het spel uit dat het beste bij je past en leer zo gemakkelijk blind te typen.</p>
+    </div>
+    <div class="features-img-container2">
+        <img class="features-img" src="~/images/niveaus.jpg">
+    </div>
+    <div class="features-text2">
+        <h1>02.</h1>
+        <h2>niveaus</h2>
+        <p>Nog nooit leren typen?<br> Geen probleem! In onze games heb je keuze uit meerdere moeilijkheden en typesnelheden, zo kun je een passend niveau uitkiezen.</p>
+        
     </div>
 </div>
 
