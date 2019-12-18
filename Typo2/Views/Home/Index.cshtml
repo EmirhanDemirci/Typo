@@ -5,6 +5,7 @@
     ViewBag.Title = "Home Page";
 }
 @{
+    string Welcome = "welcome, ";
     string firstName = "";
     string lastName = "";
     var adminLogin = 0;
@@ -20,160 +21,199 @@
 
 <head>
     @*<title>TYPO</title>
-    <link rel="stylesheet" href="/styles/index.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap" rel="stylesheet">
-    <script src="/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="/Scripts/main.js"></script>*@
+        <link rel="stylesheet" href="/styles/index.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap" rel="stylesheet">
+        <script src="/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="/Scripts/main.js"></script>*@
     <link rel="stylesheet" href="/styles/index.css">
 </head>
 
 <nav>
-    <div class="menu-container">
-        <div class="logo">
-            <img id="logo" src="/images/logo.png" />
-        </div>
-        <div class="menu">
-            <div class="menu-content">
-                <a href="#about" class="menu-about">OVER ONS</a>
-                <a href="#features" class="menu-features">FEATURES</a>
-                <a href="#benefits" class="menu-benefits">VOORDELEN</a>
-                <a href="#contact" class="menu-contact">CONTACT</a>
-                @if (adminLogin == 0)
-                {
-                    <a class="login-form">@Html.ActionLink("KOOP NU!", "purchase", "Home")</a>
-                }
-                else
-                {
-                    <a class="login-form">@Html.ActionLink("ADMIN!", "purchase", "Home")</a>
-                }
+    <div id="sidebar">
+        <a href='@Url.Action("Index", "Home")'><img id="logo" src="images/logo.png" /></a>
 
-                @if (firstName == "")
-                {
-                    <a href="#" class="login">LOG IN</a>
-                }
-                else
-                {
-                    <a class="login-form">@Html.ActionLink("LOGOUT", "LogOut", "Account")</a>
-                }
-                @*<a href="#" class="login">LOG⠀IN</a>*@
+        <ul>
+            <div class="logged-user">
+                <li>@if (firstName != "") {<h1 class="welcome-font"> Welcome, @firstName</h1>}</li>
             </div>
-            <div class="arrow"></div>
-        </div>
-        <div class="login-form">
-            <form method="post">
-                <div class="well">
-                    <div class="form-group">
-                        <label>E-mail</label>
-                        <input name="MailUser" type="email" class="form-control" placeholder="Uw e-mail adres" required />
+            <li><a href="#about">Over ons</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#benefits">Voordelen</a></li>
+            <li><a href="#contact">Contact</a></li>
+            @if (adminLogin == 0)
+            {
+                <li><a class="login-form1">@Html.ActionLink("KOOP NU!", "purchase", "Home")</a></li>
+            }
+            else
+            {
+                <li><a class="login-form1">@Html.ActionLink("ADMIN!", "purchase", "Home")</a></li>
+            }
+
+            @if (firstName == "")
+            {
+                <li><a href="#" id="login">LOG IN</a></li>
+            }
+            else
+            {
+                <li><a class="login-form1">@Html.ActionLink("LOGOUT", "LogOut", "Account")</a></li>
+            }
+            <div class="login-form">
+                <form method="post">
+                    <label>E-mail</label>
+                    <div>
+                        <input name="MailUser" type="text" placeholder="Vul e-mail adres in" required />
                     </div>
-                    <div class="form-group">
-                        <label>Wachtwoord</label>
-                        <input name="Password" type="password" class="form-control" placeholder="Uw wachtwoord" required />
+                    <label>Wachtwoord</label>
+                    <div>
+                        <input name="Password" type="password" placeholder="Vul wachtword in" required />
                     </div>
-                    <button type="submit" class="btn btn-info">Submit</button>
-                </div>
-                <div class="register">
-                    @*<a href="register.cshtml">Geen account? Registreer hier</a>*@
-                    <a> @Html.ActionLink("Geen account? Registreer hier", "Register", "Account")</a>
-                </div>
-            </form>
+                    <div>
+                        <input type="submit" value="Log in" />
+                    </div>
+                    <div class="register">
+                        @*<a href="register.cshtml">Geen account? Registreer hier</a>*@
+                        <a> @Html.ActionLink("Geen account? Registreer hier", "Register", "Account")</a>
+                    </div>
+                </form>
+            </div>
+        </ul>
+        <div id="sidebar-btn">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 </nav>
-Logged user: <h1>@firstName</h1>
-<div class="about-container" id="about">
-    <h2>Over ons</h2>
-    <h1>Leer typen met TYPO</h1>
-    <hr class="heading-line">
-    <div class="about-content">
-        <p>
-            Tegenwoordig wordt er verwacht dat alles digitaal en online wordt gedaan. Hiervoor moet iemand redelijk overweg kunnen gaan met computers. Om die reden worden er op de basisschool van jongs af aan al blind-typ-cursussen gegeven. Dit is echter niet altijd zo geweest, waardoor er veel mensen zijn die deze vaardigheid niet bezitten.
-            <br><br>
-            Daarom hebben wij als TYPO een product ontwikkeld dat voor iedereen beschikbaar is. Ons product is met meerdere varianten opgezet en dat maakt het een optie voor alle leeftijdsgroepen. Kinderen kunnen leren typen door spellen te spelen, met een steeds toenemende moeilijkheidsgraad. Hiernaast zijn de spellen ook goed te begrijpen, waardoor ouderen ook makkelijk gebruik kunnen maken van ons product. Voor ons is het belangrijk dat onze spellen uitdaging en plezier voor alle leeftijden bieden.
-        </p>
+<div class="header">
+    PLACEHOLDER FOR ANIMATED HEADER
+</div>
+
+<div class="header-transition">
+    <div class="transition-img-1">
+        <div class="transition-img-container">
+            <img class="transition-img" src="~/images/Squidward.jpg">
+        </div>
+    </div>
+    <div class="transition-img-2">
+        <div class="transition-img-container">
+            <img class="transition-img" src="~/images/Squidward.jpg">
+        </div>
+    </div>
+    <div class="transition-img-3">
+        <div class="transition-img-container">
+            <img class="transition-img" src="~/images/Squidward.jpg">
+        </div>
     </div>
 </div>
-<div class="about-image"></div>
-<div class="bg-image">
-    <div class="feature-one">
-        <div class="feature-alignment" id="features">
-            <img class="icon" src="/images/icon.png" />
-            <h1 style="color:#e4e3dd;">VARIANTEN</h1>
-            <hr class="feature-line">
-        </div>
-        <p>
-            Keuze uit meerdere spellen.<br><br>
-            Voor ons is het belangrijk dat onze spellen uitdaging en plezier voor alle leeftijden bieden. Kies het spel uit dat het beste bij je past en leer gemakkelijk blind te typen.
-        </p>
-        <br><br><br><img class="placeholder2" src="/images/placeholder-image.png">
+
+<div id="about" class="about-container">
+    <div class="about-line"></div>
+    <div class="about-h2">
+        <h2>OVER ONS</h2>
     </div>
-    <div class="feature-two">
-        <div class="feature-alignment">
-            <img class="icon" src="/images/icon.png" />
-            <h1 style="color:#e4e3dd;">NIVEAUS</h1>
-            <hr class="feature-line">
-        </div>
-        <p>
-            Verschillende niveaus.<br><br>
-            Nog nooit leren typen? Geen probleem! In onze spellen heb je keuze uit meerdere moeilijkheidsgraden en typsnelheden, zo kun je een niveau uitkiezen dat bij jou past.
-        </p>
-        <br><br><br><img class="placeholder2" src="/images/placeholder-image.png">
+    <div class="about-h1">
+        <h1>Wij zijn TYPO – een bedrijf dat typ cursussen ontwikkelt, gericht op het maken van educatieve videogames  voor zowel professioneel als privégebruik.</h1>
     </div>
-    <div class="feature-three">
-        <div class="feature-alignment">
-            <img class="icon" src="/images/icon.png" />
-            <h1 style="color:#e4e3dd;">VISUALISATIE</h1>
-            <hr class="feature-line">
-        </div>
-        <p>
-            Voortgang met eigen ogen zien.<br><br>
-            Wij bieden onze gebruikers de kans aan om hun resultaten te laten visualeren met een fysieke baan en auto’s. Blind leren typen is nog nooit zo leuk geweest!
-        </p>
-        <br><br><br><img class="placeholder2" src="/images/placeholder-image.png">
+    <div class="about-text1">
+        <p>Onze games gaan zowel kinderen als volwassen de vaardigheid van blind typen leren, een noodzaak in de digitale samenleving van vandaag.</p>
+    </div>
+    <div class="about-text2">
+        <p>Ons doel is om producten te hebben die geschikt zijn voor alle leeftijdsgroepen, waardoor leren een plezierige ervaring voor zowel u als uw kinderen wordt. Dus kies de game die het beste bij je past en laten we beginnen met leren!</p>
     </div>
 </div>
-<div class="benefits-image"></div>
-<div class="benefits" id="benefits">
-    <h2>Voordelen</h2>
-    <h1>Waarom ons product?</h1>
-    <hr class="heading-line">
-    <div class="benefits-list">
-        <li>Snel & gemakkelijk</li>
-        <li>Leuk voor iedereen</li>
-        <li>Unieke spelvorm</li>
+
+<div id="features" class="features-container">
+    <div class="features-block">
+        <h3>TYPO biedt een typ cursus aan voor jong en oud.</h3>
+    </div>
+    <div class="features-img-container1">
+        <img class="features-img" src="/images/placeholder-image.png">
+    </div>
+    <div class="features-text1">
+        <h1>02.</h1>
+        <h2>niveaus</h2>
+        <p>Nog nooit leren typen?<br> Geen probleem! In onze games heb je keuze uit meerdere moeilijkheden en typsnelheden, zo kun je een passend niveau uitkiezen.</p>
+    </div>
+    <div class="features-img-container2">
+        <img class="features-img" src="/images/placeholder-image.png">
+    </div>
+    <div class="features-text2">
+        <h1>01.</h1>
+        <h2>varianten</h2>
+        <p>Voor ons is het belangrijk dat onze spellen uitdaging en plezier voor alle leeftijden bieden. Kies het spel uit dat het beste bij je past en leer zo gemakkelijk blind te typen.</p>
     </div>
 </div>
-<img class="rectangle-image" src="/images/rectangle-image.jpg" />
-<div class="contact" id="contact">
-    <h2>Contact</h2>
-    <h1>Neem contact met ons op</h1>
-    <hr class="heading-line">
-    <p class="contact-text">Alles met een * is verplicht.</p>
+
+<div id="benefits" class="benefits-container">
+    <div class="benefits-line"></div>
+    <div class="benefits-h2">
+        <h2>VOORDELEN</h2>
+    </div>
+    <div class="benefits-h1">
+        <h1>Wat zijn de voordelen van TYPO?</h1>
+    </div>
+    <div class="benefits-under">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div class="benefits-box1">
+        <h1>highscore</h1>
+        <p>Houd je voortgang bij met ons score systeem en blijf jezelf verbeteren</p>
+    </div>
+    <div class="benefits-box2">
+        <h1>multiplayer</h1>
+        <p>Neem het op tegen je vrienden en familie in multiplayer en wordt een winnaar</p>
+    </div>
+    <div class="benefits-box3">
+        <h1>overzicht</h1>
+        <p>Ben je een ouder of docent? Ook met TYPO kun je de score van je de score van je klas of kind makkelijk bijhouden</p>
+    </div>
+    <div class="benefits-box4">
+        <h1>1 account, 3 spellen</h1>
+        <p>Met een TYPO account kun je onze spellen op elke computer spelen en neem je je voortang met je mee</p>
+    </div>
+    <div class="benefits-box5">
+        <h1>TYPO raceset</h1>
+        <p>Wordt een échte racer met de TYPO raceset  en laat iedereen zien hoe goed jij typt</p>
+    </div>
+</div>
+
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.330293480661!2d5.479793915938489!3d51.45209192256635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6d92199730073%3A0x1c98f3a0d8ee087b!2sFontys%20Hogescholen!5e0!3m2!1snl!2snl!4v1574208641587!5m2!1snl!2snl" allowfullscreen=""></iframe>
+</div>
+
+<div id="contact" class="contact-container">
+    <div class="contact-line"></div>
+    <div class="contact-h2">
+        <h2>CONTACT</h2>
+    </div>
+    <div class="contact-h1">
+        <h1>Neem contact met ons op.</h1>
+    </div>
+    <div class="contact-text">
+        <p>
+            Fontys Hogescholen<br>
+            Rachelsmolen, 5612 MA Eindhoven<br><br>
+
+            <a href="tel:088-508-0000">T. 088-508-0000</a><br>
+
+            <a href="mailto:Typo@fontys.nl">Typomailservice@gmail.nl</a><br><br><br><br><br><br>
+            Alle velden zijn verplicht.
+        </p>
+    </div>
+
     <form>
-        <label for="name">Naam*</label>
-        <input type="text2" id="name" name="name" placeholder="Uw naam">
-        <label for="email">E-mail*</label>
-        <input type="text2" id="email" name="email" placeholder="Uw e-mailadres">
+        <label for="name">Naam</label>
+        <input type="text2" id="name" name="name" placeholder="Uw naam" required>
+        <label for="email">E-mail</label>
+        <input type="text2" id="email" name="email" placeholder="Uw e-mailadres" required>
         <label for="subject">Onderwerp</label>
-        <input type="text2" id="subject" name="subject" placeholder="Uw onderwerp">
+        <input type="text2" id="subject" name="subject" placeholder="Uw onderwerp" required>
         <label for="message">Bericht</label>
         <textarea id="message" class="contact-message" name="message" placeholder="Uw bericht" style="height:200px"></textarea>
-        <input type="submit2" value="Verzenden">
+        <input type="submit2" value="Verzenden" required>
     </form>
 </div>
-<div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.330293480661!2d5.479793915938489!3d51.45209192256635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6d92199730073%3A0x1c98f3a0d8ee087b!2sFontys%20Hogescholen!5e0!3m2!1snl!2snl!4v1574208641587!5m2!1snl!2snl" width="500" height="484" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-</div>
+
 <div class="footer">
-    <div class="footer-text">
-        <strong>Adres</strong><br>
-        Fontys Hogescholen<br>
-        Rachelsmolen, 5612 MA Eindhoven<br><br>
-        <strong>Telefoon: </strong><a href="tel:088-508-0000">088-508-0000</a><br><br>
-        <strong>Support: </strong><a href="mailto:Typo@fontys.nl">Typomailservice@gmail.nl</a><br>
-        <strong>Marketing: </strong><a href="mailto:Typo@marketing.nl">Typo@marketing.nl</a>
-    </div>
-</div>
-<div class="footer-2">
     © 2019 TYPO
 </div>

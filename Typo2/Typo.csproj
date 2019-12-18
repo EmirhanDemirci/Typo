@@ -146,6 +146,7 @@
     <Content Include="images\logo.png" />
     <Content Include="images\placeholder-image.png" />
     <Content Include="images\rectangle-image.jpg" />
+    <Content Include="images\Squidward.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagramController.cd" />

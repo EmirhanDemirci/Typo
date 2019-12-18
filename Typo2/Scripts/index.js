@@ -1,17 +1,21 @@
-$(document).ready(function() {
-    var arrow = $(".arrow");
+$(document).ready(function () {
+    $('#sidebar-btn').click(function () {
+        $('#sidebar').toggleClass('visible');
+    });
+});
+
+$(document).ready(function () {
     var form = $(".login-form");
     var status = false;
-    $(".login").click(function(event) {
+    $("#login").click(function (event) {
         event.preventDefault();
-        if(status === false) {
-            arrow.toggle();
+        if (status === false) {
             form.toggle();
             status = true;
         } else {
-            arrow.toggle();
             form.toggle();
             status = false;
         }
-    });
-});
+    })
+})
+
