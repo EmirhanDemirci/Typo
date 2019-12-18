@@ -97,6 +97,20 @@ ul li a:hover {
 	text-decoration: none;
 }
 
+.logged-user {
+    background: #132125;
+    border-bottom: 1px solid #0d171a;
+    border-top: 1px solid #0d171a;
+    display: block;
+    width: 180px;
+    padding: 10px;
+}
+.welcome-font {
+    font-weight: 400;
+    color: #CCC;
+}
+
+
 .login-form > form {
     width: 100%;
     margin: 15px auto;
@@ -834,6 +848,9 @@ input[type=text2], select, textarea {
     .contact-h1 {
         padding-bottom: 13em;
     }
+}
+.login-form1{
+    display: none;
 }
 
 

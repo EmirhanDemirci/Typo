@@ -5,6 +5,7 @@
     ViewBag.Title = "Home Page";
 }
 @{
+    string Welcome = "welcome, ";
     string firstName = "";
     string lastName = "";
     var adminLogin = 0;
@@ -32,18 +33,20 @@
         <a href='@Url.Action("Index", "Home")'><img id="logo" src="images/logo.png" /></a>
 
         <ul>
-            <li>Logged user: <h1>@firstName</h1></li>
+            <div class="logged-user">
+                <li>@if (firstName != "") {<h1 class="welcome-font"> Welcome, @firstName</h1>}</li>
+            </div>
             <li><a href="#about">Over ons</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#benefits">Voordelen</a></li>
             <li><a href="#contact">Contact</a></li>
             @if (adminLogin == 0)
             {
-                <li><a class="login-form">@Html.ActionLink("KOOP NU!", "purchase", "Home")</a></li>
+                <li><a class="login-form1">@Html.ActionLink("KOOP NU!", "purchase", "Home")</a></li>
             }
             else
             {
-                <li><a class="login-form">@Html.ActionLink("ADMIN!", "purchase", "Home")</a></li>
+                <li><a class="login-form1">@Html.ActionLink("ADMIN!", "purchase", "Home")</a></li>
             }
 
             @if (firstName == "")
@@ -52,17 +55,17 @@
             }
             else
             {
-                <li><a class="login-form">@Html.ActionLink("LOGOUT", "LogOut", "Account")</a></li>
+                <li><a class="login-form1">@Html.ActionLink("LOGOUT", "LogOut", "Account")</a></li>
             }
             <div class="login-form">
-                <form>
+                <form method="post">
                     <label>E-mail</label>
                     <div>
-                        <input type="text" placeholder="Vul e-mail adres in" required />
+                        <input name="MailUser" type="text" placeholder="Vul e-mail adres in" required />
                     </div>
                     <label>Wachtwoord</label>
                     <div>
-                        <input type="password" placeholder="Vul wachtword in" required />
+                        <input name="Password" type="password" placeholder="Vul wachtword in" required />
                     </div>
                     <div>
                         <input type="submit" value="Log in" />
@@ -88,17 +91,17 @@
 <div class="header-transition">
     <div class="transition-img-1">
         <div class="transition-img-container">
-            <img class="transition-img" src="/images/placeholder-image.png">
+            <img class="transition-img" src="~/images/Squidward.jpg">
         </div>
     </div>
     <div class="transition-img-2">
         <div class="transition-img-container">
-            <img class="transition-img" src="/images/placeholder-image.png">
+            <img class="transition-img" src="~/images/Squidward.jpg">
         </div>
     </div>
     <div class="transition-img-3">
         <div class="transition-img-container">
-            <img class="transition-img" src="/images/placeholder-image.png">
+            <img class="transition-img" src="~/images/Squidward.jpg">
         </div>
     </div>
 </div>
