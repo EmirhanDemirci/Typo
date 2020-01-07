@@ -170,6 +170,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="styles\admin.css" />
     <Content Include="styles\index.css" />
     <Content Include="styles\purchase.css" />
     <Content Include="styles\register.css" />

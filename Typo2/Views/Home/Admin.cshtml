@@ -4,21 +4,26 @@
     ViewBag.Title = "Admin";
 }
 
-<h2>Admin</h2>
+<head>
+    <link rel="stylesheet" href="~/styles/admin.css">
+</head>
 
+<a href='@Url.Action("Index", "Home")'><button id="button2">Ga terug naar de hoofdpagina</button></a>
+<h1>Admin</h1>
 
-<div class="well">
-    <div class="form-group">
+<<div class="admin-container">
+    <div class="admin-table">
         <table>
-            <tr>
-                <th>UserId</th>
-                <th>MailUser</th>
+            <tr class="table-names">
+                <th>User ID</th>
+                <th>E-mail</th>
                 <th>Password</th>
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>BirthDate</th>
-                <th>Docent</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birthdate</th>
+                <th>Teacher</th>
                 <th>Admin</th>
+                <th>Delete</th>
             </tr>
             @foreach (var d in Model)
             {
@@ -31,11 +36,11 @@
                         <td>@d.FirstName</td>
                         <td>@d.LastName</td>
                         <td>@d.BirthDate</td>
-                        <td>@d.IsDocent</td>
-                        <td>@d.IsAdmin</td>
+                        <td class="table-spacing">@d.IsDocent</td>
+                        <td class="table-spacing">@d.IsAdmin</td>
                         @*<td>
-                        <button onclick="DeleteRow('@Model[i].UserId')" id="delete-@Model[i].UserId" type="submit">DELETE!</button>
-                    </td>*@
+                                <button onclick="DeleteRow('@Model[i].UserId')" id="delete-@Model[i].UserId" type="submit">DELETE!</button>
+                            </td>*@
                         <td>
                             <button id="delete-@d.UserId" type="submit" class="btn btn-danger">Delete</button>
                         </td>

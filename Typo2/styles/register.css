@@ -1,8 +1,29 @@
 body {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    background: #e4e3dd;
+    background-image: url("/images/header2.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+html {
+    height: 100%;
+}
+
+.registration-container {
+    margin-top: 8em !important;
+    margin: auto;
+    /* margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+    padding-bottom: 4em;
+    padding-left: 1em;
+    padding-right: 1em;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.3);
+    width: 45%;
+    overflow-x: auto;
 }
 
 .form-control {
@@ -20,7 +41,8 @@ body {
     border-right: 0px;
     border-bottom: 0px;
     box-shadow: inset 0px 0px 1px 1px #d3d2cc;
-  }
+}
+
 #form-control {
     width: 100%;
     box-sizing: border-box;
@@ -37,8 +59,8 @@ body {
     border-bottom: 0px;
     box-shadow: inset 0px 0px 1px 1px #d3d2cc;
 }
-  
- #button {
+
+#button {
     width: 500px;
     height: 35px;
     background: #00b19e;
@@ -50,18 +72,18 @@ body {
     border: 0px;
     cursor: pointer;
     text-align: center;
-  }
-  
-  #button:hover {
-    transition: background-color 0.2s;
-    background: #018679;
-  }
+}
+
+    #button:hover {
+        transition: background-color 0.2s;
+        background: #018679;
+    }
 
 .well {
     padding-top: 50px;
     /* padding-left: 200px;
-    padding-bottom: 100px;
-    float: left; */
+  padding-bottom: 100px;
+  float: left; */
     color: #0d171a;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -105,6 +127,9 @@ h2 {
 }
 
 #button2 {
+    top: 0;
+    left: 0;
+    position: absolute;
     width: 250px;
     height: 35px;
     background: #00b19e;
@@ -125,15 +150,18 @@ h2 {
         background: #018679;
     }
 
-.footer-2 {
-    margin-top: 100px;
-    display: inline-block;
-    height: 50px;
-    padding-top: 25px;
+.footer {
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 1em;
+    padding-bottom: 1em;
     width: 100%;
-    color: #7d7d7d;
+    color: #e4e3dd;
     background-color: #0d171a;
-    text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+    justify-items: center;
 }
