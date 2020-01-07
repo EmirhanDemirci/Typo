@@ -1,45 +1,50 @@
 ﻿@model Typo.Model.Models.Account
 <head>
-    <link rel="stylesheet" href="/styles/register.css">
+    <link rel="stylesheet" href="~/styles/register.css">
 </head>
 
 <a href='@Url.Action("Index", "Home")'><button id="button2">Ga terug naar de hoofdpagina</button></a>
-<div class="header-container">
-    <h2>Account</h2>
-    <h1>Registratie</h1>
-    <hr class="heading-line">
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="col-lg-12">
-                <form method="post">
-                    <div class="well">
-                        <div class="form-group">
-                            <label>E-mail</label>
-                            <input id="form-control" name="MailUser" type="email" class="form-control" placeholder="Uw e-mailadres" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Wachtwoord</label>
-                            <input id="form-control" name="Password" type="password" class="form-control" placeholder="Uw wachtwoord" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Voornaam</label>
-                            <input name="FirstName" type="text" class="form-control" placeholder="Uw voornaam" required />
-                        </div>
-                        <div class="form-group">
+<div class="registration-container">
+    <div class="header-container">
+        <h2>Account</h2>
+        <h1>Registratie</h1>
+        <hr class="heading-line">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="col-lg-12">
+                    <form method="post">
+                        <div class="well">
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <input id="form-control" name="MailUser" type="email" class="form-control" placeholder="Uw e-mailadres" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Wachtwoord</label>
+                                <input id="form-control" name="Password" type="password" class="form-control" placeholder="Uw wachtwoord" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Voornaam</label>
+                                <input name="FirstName" type="text" class="form-control" placeholder="Uw voornaam" required />
+                            </div>
+                            <div class="form-group">
 
-                            <label>Achternaam</label>
-                            <input name="LastName" type="text" class="form-control" placeholder="Uw achternaam" required />
+                                <label>Achternaam</label>
+                                <input name="LastName" type="text" class="form-control" placeholder="Uw achternaam" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Geboortedatum</label>
+                                <input name="BirthDate" type="date" class="form-control" placeholder="Uw Geboortedatum" required />
+                            </div>
+                            <button class="btn btn-info" id="button" type="submit">Registreer</button>
                         </div>
-                        <div class="form-group">
-                            <label>Geboortedatum</label>
-                            <input name="BirthDate" type="date" class="form-control" placeholder="Uw Geboortedatum" required />
-                        </div>
-                        <button class="btn btn-info" id="button" type="submit">Registreer</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+</div>
+<div class="footer">
+    © 2019 TYPO
 </div>
