@@ -137,8 +137,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="images\adjust.png" />
     <Content Include="images\bg-element.png" />
     <Content Include="images\cars1.jpg" />
+    <Content Include="images\choices.png" />
+    <Content Include="images\header-image.jpg" />
     <Content Include="images\header.jpg" />
     <Content Include="images\header2.jpg" />
     <Content Include="images\icon.png" />
@@ -147,12 +150,16 @@
     <Content Include="images\icon3.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\niveaus.jpg" />
+    <Content Include="images\pattern.png" />
     <Content Include="images\placeholder-image.png" />
     <Content Include="images\racetrack.jpg" />
     <Content Include="images\rectangle-image.jpg" />
     <Content Include="images\Squidward.jpg" />
     <Content Include="images\toycar.jpg" />
     <Content Include="images\toycar2.jpg" />
+    <Content Include="images\transition-image1.jpg" />
+    <Content Include="images\transition-image2.jpg" />
+    <Content Include="images\transition-image3.jpg" />
     <Content Include="images\typing.jpg" />
     <Content Include="images\varianten.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -171,12 +178,14 @@
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="styles\admin.css" />
+    <Content Include="styles\games.css" />
     <Content Include="styles\index.css" />
     <Content Include="styles\purchase.css" />
     <Content Include="styles\register.css" />
     <Content Include="Views\Home\Admin.cshtml" />
-    <Content Include="Views\Home\docent.cshtml" />
-    <None Include="Views\Home\purchase.cshtml" />
+    <Content Include="Views\Home\Docent.cshtml" />
+    <None Include="Views\Home\Purchase.cshtml" />
+    <None Include="Views\Home\Games.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
