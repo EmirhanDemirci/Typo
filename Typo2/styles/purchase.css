@@ -125,6 +125,46 @@ h5 {
     justify-items: center;
 }
 
+#button {
+    margin-top: 2em;
+    width: 100%;
+    height: 35px;
+    background: #00b19e;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    outline: none;
+    border: 0px;
+    cursor: pointer;
+    text-align: center;
+}
+
+    #button:hover {
+        transition: background-color 0.2s;
+        background: #018679;
+    }
+
+#button-unavailable {
+    margin-top: 2em;
+    width: 100%;
+    height: 35px;
+    background: #666666;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    outline: none;
+    border: 0px;
+    cursor: pointer;
+    text-align: center;
+}
+
+    #button-unavailable:hover {
+        transition: background-color 0.2s;
+        background: #464646;
+    }
+
 #button2 {
     width: 250px;
     height: 35px;
