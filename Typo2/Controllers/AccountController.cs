@@ -18,6 +18,7 @@ namespace Typo.Controllers
 
         public AccountController()
         {
+            //Get the accountservices
             _accountServices = new AccountService();
         }
 
@@ -33,6 +34,7 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult Register(Account account)
         {
+            //Using the registration function inside accountServices
             _accountServices.Register(account.MailUser, account.Password, account.FirstName, account.LastName, account.BirthDate, account.IsAdmin, account.IsDocent);
 
             return RedirectToAction("Index", "Home");
@@ -40,6 +42,7 @@ namespace Typo.Controllers
 
         public ActionResult LogOut()
         {
+            //deleting the cookies
             if (Request.Cookies["UserInfo"] != null)
             {
                 var c = new HttpCookie("UserInfo");

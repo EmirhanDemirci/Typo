@@ -23,6 +23,7 @@ namespace Typo2.Controllers
         }
         public ActionResult GenerateKey(Key key)
         {
+            //Generating key
             Account user;
             if (Request.Cookies["UserInfo"] != null)
             { 
@@ -33,6 +34,7 @@ namespace Typo2.Controllers
         }
         public ActionResult CheckLicense()
         {
+            //Checking the license
             Account user;
             Key key;
             key = null;

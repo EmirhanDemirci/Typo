@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Typo.Logic.Services;
 using Typo.Model.Models;
 
-namespace Typo.Controllers
+namespace Typo2.Controllers
 {
     public class HomeController : Controller
     {
@@ -16,25 +16,28 @@ namespace Typo.Controllers
      
         public HomeController()
         {
+            //Getting the accountservices
             _accountServices = new AccountService();
+            //Getting the adminservices
             _adminServices = new AdminService();
         }
 
         [HttpPost]
         public ActionResult Index(Account account)
         {
-            //account.password = null;
-            Account newAccount;
-            try { newAccount = _accountServices.Login(account.MailUser, account.Password); }
+            //Logging the user in
+            Account Account;
+            try { Account = _accountServices.Login(account.MailUser, account.Password); }
             catch (Exception e)
             {
                 ViewData["Message"] = e.Message;
                 return View();
             }
-            if (newAccount != null)
+            //Making the cookies of that particular account
+            if (Account != null)
             {
                 HttpCookie cookie = new HttpCookie("UserInfo");
-                string userJson = JsonConvert.SerializeObject(newAccount);
+                string userJson = JsonConvert.SerializeObject(Account);
                 cookie.Value = userJson;
                 //cookie["Password"] = account.password;
                 cookie.Expires.AddDays(1);
@@ -47,7 +50,6 @@ namespace Typo.Controllers
 
         public ActionResult Index()
         {
-            //HttpCookie cookie = Request.Cookies["UserInfo"];
             return View();
         }
 
@@ -58,26 +60,20 @@ namespace Typo.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
         public ActionResult Games()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
         public ActionResult Admin()
         {
-            
+            //Getting access to the admin page if the admin INT == 1
             if (Request.Cookies["UserInfo"] != null)
             {
                 Account user;
@@ -95,6 +91,7 @@ namespace Typo.Controllers
         [HttpPost]
         public ActionResult Admin(Account account)
         {
+            //Getting access to the DeleteAccount function inside adminServices
             try
             {
                 _adminServices.DeleteAccount(account.UserId);
@@ -110,6 +107,7 @@ namespace Typo.Controllers
         }
         public ActionResult Docent()
         {
+            //Loggin the teacher in
             Account user;
             if (Request.Cookies["UserInfo"] != null)
             {

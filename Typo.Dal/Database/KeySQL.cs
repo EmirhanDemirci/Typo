@@ -10,6 +10,7 @@ namespace Typo.Dal.Database
 {
     public class KeySQL : Connection
     {
+        //generating the key
         public void GenerateKey(string key, int userId)
         {
             var date = DateTime.Today;
@@ -32,6 +33,7 @@ namespace Typo.Dal.Database
                 }
             }
         }
+        //checks the key
         public Key CheckKey(int userId)
         {
             Key key = null;

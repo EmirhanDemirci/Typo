@@ -26,6 +26,7 @@ namespace Typo.Dal.Database
             throw new NotImplementedException();
         }
 
+        //simple delete query
         public bool Delete(Account obj)
         {
             const string query = "DELETE FROM [Account] WHERE UserId = {0}";
@@ -46,7 +47,7 @@ namespace Typo.Dal.Database
                 }
             }
         }
-
+        //simple login query
         public Account Login(string mailUser, string password)
         {
             Account account = null;
@@ -73,7 +74,7 @@ namespace Typo.Dal.Database
             MssqlConnectionString.Close();
             return account;
         }
-
+        //simple register query
         public void Register(string mailUser, string password, string firstname, string lastname, DateTime birthdate, int isAdmin, int isDocent)
         {
                 var query = "INSERT INTO Account(MailUser, Password, FirstName, LastName, BirthDate, IsAdmin, IsDocent) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')";
@@ -93,7 +94,7 @@ namespace Typo.Dal.Database
                     }
                 }
         }
-
+        //Getting all data from Accounts
         public List<Account> GetAllData()
         {
             Account account;
@@ -122,7 +123,6 @@ namespace Typo.Dal.Database
             MssqlConnectionString.Close();
             return accounts;
         }
-
         public Account DeleteAccount(int userId)
         {
             Account account = null;
