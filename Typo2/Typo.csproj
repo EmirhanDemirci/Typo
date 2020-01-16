@@ -141,6 +141,9 @@
     <Content Include="images\bg-element.png" />
     <Content Include="images\cars1.jpg" />
     <Content Include="images\choices.png" />
+    <Content Include="images\game1.jpg" />
+    <Content Include="images\game2.jpg" />
+    <Content Include="images\game3.jpg" />
     <Content Include="images\header-image.jpg" />
     <Content Include="images\header.jpg" />
     <Content Include="images\header2.jpg" />
