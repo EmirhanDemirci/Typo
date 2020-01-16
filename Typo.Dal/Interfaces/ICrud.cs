@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Typo.Dal.Interfaces
 {
+    //interfaces to execute Crud operation (Create, Read, Update, Delete)
     public interface ICrud<T>
     {
         void Create(T obj);

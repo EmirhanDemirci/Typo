@@ -11,6 +11,7 @@ namespace Typo.Dal
     {
         protected readonly SqlConnection MssqlConnectionString;
 
+        //connection string for the database
         protected Connection()
         {
             MssqlConnectionString =

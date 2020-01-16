@@ -1,4 +1,5 @@
-﻿@using Newtonsoft.Json
+﻿@using System.ComponentModel
+@using Newtonsoft.Json
 @using Typo.Model.Models
 @model Typo.Model.Models.Account
 @{
@@ -9,6 +10,7 @@
     string firstName = "";
     string lastName = "";
     var adminLogin = 0;
+    var licensekey = "";
     if (Request.Cookies["UserInfo"] != null)
     {
         var user = JsonConvert.DeserializeObject<Account>(Request.Cookies["UserInfo"].Value);
@@ -37,50 +39,52 @@
                 <li>
                     @if (firstName != "")
                     {<h1 class="welcome-font"> Welcome, @firstName</h1>}
-            </li>
-        </div>
-        <li><a href="#about">Over ons</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#benefits">Voordelen</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>@Html.ActionLink("Games", "Games", "Home")</li>
-        @if (adminLogin == 0)
-        {
-            <li><a class="login-form1">@Html.ActionLink("Koop nu", "Purchase", "Home")</a></li>
-        }
-        else
-        {
-            <li><a class="login-form1">@Html.ActionLink("ADMIN!", "Admin", "Home")</a></li>
-        }
+                </li>
+            </div>
+            <li><a href="#about">Over ons</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#benefits">Voordelen</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>@Html.ActionLink("Games", "Games", "Home")</li>
+            @if (adminLogin != 0)
+            {
+                <li><a class="login-form1">@Html.ActionLink("ADMIN!", "Admin", "Home")</a></li>
 
-        @if (firstName == "")
-        {
-            <li><a href="#" id="login">Account</a></li>
-        }
-        else
-        {
-            <li><a class="login-form1">@Html.ActionLink("Log uit", "LogOut", "Account")</a></li>
-        }
-        <div class="login-form">
-            <form id="login-form-id" method="post">
-                <label>E-mail</label>
-                <div>
-                    <input name="MailUser" type="text" placeholder="Vul e-mail adres in" required />
-                </div>
-                <label>Wachtwoord</label>
-                <div>
-                    <input name="Password" type="password" placeholder="Vul wachtword in" required />
-                </div>
-                <div>
-                    <input type="submit" value="Log in" />
-                </div>
-                <div class="register">
-                    @*<a href="register.cshtml">Geen account? Registreer hier</a>*@
-                    <a> @Html.ActionLink("Geen account? Registreer hier", "Register", "Account")</a>
-                </div>
-            </form>
-        </div>
-    </ul>
+            }
+            else
+            {
+                <li><a class="login-form1">@Html.ActionLink("Koop nu", "Purchase", "Home")</a></li>
+            }
+
+            @if (firstName == "")
+            {
+                <li><a href="#" id="login">Account</a></li>
+            }
+            else
+            {
+                <li><a class="login-form1">@Html.ActionLink("Check je licentie", "CheckLicense", "License")</a></li>
+                <li><a class="login-form1">@Html.ActionLink("Log uit", "LogOut", "Account")</a></li>
+            }
+            <div class="login-form">
+                <form id="login-form-id" method="post">
+                    <label>E-mail</label>
+                    <div>
+                        <input name="MailUser" type="text" placeholder="Vul e-mail adres in" required />
+                    </div>
+                    <label>Wachtwoord</label>
+                    <div>
+                        <input name="Password" type="password" placeholder="Vul wachtword in" required />
+                    </div>
+                    <div>
+                        <input type="submit" value="Log in" />
+                    </div>
+                    <div class="register">
+                        @*<a href="register.cshtml">Geen account? Registreer hier</a>*@
+                        <a> @Html.ActionLink("Geen account? Registreer hier", "Register", "Account")</a>
+                    </div>
+                </form>
+            </div>
+        </ul>
     <div id="sidebar-btn">
         <span></span>
         <span></span>

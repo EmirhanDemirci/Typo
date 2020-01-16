@@ -53,7 +53,6 @@ namespace Typo.Controllers
             return RedirectToAction("ScoreInput", "Score");
         }
 
-
         [HttpPost]
         public ActionResult ScoreCreate(Score user)
         {
@@ -61,19 +60,6 @@ namespace Typo.Controllers
 
             return RedirectToAction("ScoreCreate", "Score");
         }
-        
-
-        /*
-        [HttpPost]
-        public ActionResult ScoreTake(Score user)
-        {
-            //var i =_ScoreServices.ScoreTake(user.userId);
-            var i = _ScoreServices.ScoreAvg(user.userId);
-            string p = i.score;
-            return Content(p);
-           // return RedirectToView ("ScoreTake", "Score");
-        }
-        */
 
         [HttpPost]
         public ActionResult ScoreHigh(Score user)
@@ -81,15 +67,7 @@ namespace Typo.Controllers
             var i = _ScoreServices.ScoreHigh(user.userId);
             string p = i.score;
             return Content(p);
-            return RedirectToAction("ScoreHigh", "Score");
         }
-
-
-
-
-
-
-        
 
         [HttpPost]
         public ActionResult ScoreAvg(Score user)
@@ -97,15 +75,7 @@ namespace Typo.Controllers
             var i = _ScoreServices.ScoreAvg(user.userId);
             string p = i.score;
             return Content(p);
-
-           // return RedirectToAction("ScoreAvg", "Score");
         }
-
-        
-
-
-
-
 
         [HttpPost]
         public ActionResult ScoreCurrent(Score user)
@@ -113,8 +83,6 @@ namespace Typo.Controllers
             var i = _ScoreServices.ScoreCurrent(user.userId);
             string p = i.score;
             return Content(p);
-
-            //return RedirectToAction("ScoreCurrent", "Score");
         }
     }
 }

@@ -12,25 +12,16 @@ namespace Typo.Controllers
         // GET: Game
         public ActionResult TypeRacer()
         {
+            //Checks if the user has a license
             if (Request.Cookies["LicenseInfo"] != null)
             {
                 return View();
             }
             else
             {
+                //Otherwise return the home page
                 return RedirectToAction("Index", "Home");
             }
-        }
-        public ActionResult GetExcelFile()
-        {
-            var fileDownloadName = "GuessTheNumber.exe";
-            var contentType = "application/zip";
-
-            var fileStream = new MemoryStream();
-            fileStream.Position = 0;
-
-
-            return File(fileStream, contentType, fileDownloadName);
         }
     }
 }
