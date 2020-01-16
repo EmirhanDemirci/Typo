@@ -325,15 +325,12 @@ h2 {
 }
 
 .features-container {
+    overflow: hidden !important;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     /* grid-column-gap: 1em; */
-    grid-template-areas:
-    "block block block block image1 image1 text1 text1"
-    "block block block block image1 image1 text1 text1"
-    "block block block block text2 text2 image2 image2"
-    "block block block block text2 text2 image2 image2"
+    grid-template-areas: "block block block block image1 image1 text1 text1" "block block block block image1 image1 text1 text1" "block block block block text2 text2 image2 image2" "block block block block text2 text2 image2 image2"
 }
 
 .features-block {
